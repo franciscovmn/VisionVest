@@ -3,3 +3,5 @@ A VisionVest é uma plataforma inovadora que combina tecnologia e inteligência 
 link da API:
 
 https://www.tradingview.com/widget/#watchlist
+
+https://www.npmjs.com/package/react-tradingview-embed
