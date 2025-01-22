@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TradingView Widget</title>
+</head>
+<body>
+
+<!-- MAPA COM CRIPTOMOEDAS -->
+<div class="tradingview-widget-container">
+    <div class="tradingview-widget-container__widget"></div>
+    <div class="tradingview-widget-copyright"><a href="https://br.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Monitore todos os mercados no TradingView</span></a></div>
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js" async>
+    {
+    "width": "auto",
+    "height": "400",
+    "symbolsGroups": [
+      {
+        "name": "Indices",
+        "originalName": "Indices",
+        "symbols": [
+          {
+            "name": "BITSTAMP:BTCUSD",
+            "displayName": "Bitcoin Dolar"
+          },
+          {
+            "name": "COINBASE:SOLUSD",
+            "displayName": "Solana Dolar"
+          },
+          {
+            "name": "BITSTAMP:ETHUSD",
+            "displayName": "Ethereum Dolar"
+          },
+          {
+            "name": "COINBASE:DOGEUSD",
+            "displayName": "Dogecoin Dolar"
+          },
+          {
+            "name": "BINANCE:XRPUSD",
+            "displayName": "Xrp Dolar"
+          },
+          {
+            "name": "COINBASE:SUIUSD",
+            "displayName": "Sui Dolar"
+          }
+        ]
+      }
+    ],
+    "showSymbolLogo": true,
+    "isTransparent": true,
+    "colorTheme": "light",
+    "locale": "br"
+  }
+    </script>
+  </div>
+  
+</body>
+</html>
