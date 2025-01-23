@@ -1,4 +1,18 @@
+// Função para esconder a div de resultados
+function esconde_div_resultador() {
+    const minhaDiv = document.getElementById('resultados');
+    minhaDiv.style.display = 'none';
+}
+
+// Esconder a div ao carregar a página
+document.addEventListener('DOMContentLoaded', () => {
+    esconde_div_resultador();
+});
+
 document.getElementById('calcular').addEventListener('click', function () {
+    const minhaDiv = document.getElementById('resultados');
+    minhaDiv.style.display = 'block'; // Mostra a div de resultados
+
     const capital = parseFloat(document.getElementById('capital').value);
     const aporte = parseFloat(document.getElementById('aporte').value);
     const taxa = parseFloat(document.getElementById('taxa').value);
@@ -61,17 +75,25 @@ document.getElementById('calcular').addEventListener('click', function () {
 });
 
 document.getElementById('limpar').addEventListener('click', function () {
+    // Limpar os campos de entrada
     document.getElementById('capital').value = '';
     document.getElementById('aporte').value = '';
     document.getElementById('taxa').value = '';
     document.getElementById('tipoTaxa').selectedIndex = 0;
     document.getElementById('periodo').value = '';
     document.getElementById('tipoPeriodo').selectedIndex = 0;
+
+    // Limpar os valores exibidos
     document.getElementById('valorFinal').textContent = '-';
     document.getElementById('valorInvestido').textContent = '-';
     document.getElementById('totalJuros').textContent = '-';
     document.getElementById('tabelaBody').innerHTML = '';
+
+    // Destruir o gráfico se existir
     if (grafico) grafico.destroy();
+
+    // Esconder a div de resultados
+    esconde_div_resultador();
 });
 
 // Função para criar o gráfico
