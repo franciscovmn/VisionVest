@@ -1,59 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TradingView Widget</title>
+    <title>Calculadora de Juros Compostos</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
+    <div class="container">
+        <h1>Calculadora de Juros Compostos</h1>
+        <label for="capital">Capital Inicial:</label>
+        <input type="number" id="capital" placeholder="R$" required>
 
-<!-- MAPA COM CRIPTOMOEDAS -->
-<div class="tradingview-widget-container">
-    <div class="tradingview-widget-container__widget"></div>
-    <div class="tradingview-widget-copyright"><a href="https://br.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Monitore todos os mercados no TradingView</span></a></div>
-    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js" async>
-    {
-    "width": "auto",
-    "height": "400",
-    "symbolsGroups": [
-      {
-        "name": "Indices",
-        "originalName": "Indices",
-        "symbols": [
-          {
-            "name": "BITSTAMP:BTCUSD",
-            "displayName": "Bitcoin Dolar"
-          },
-          {
-            "name": "COINBASE:SOLUSD",
-            "displayName": "Solana Dolar"
-          },
-          {
-            "name": "BITSTAMP:ETHUSD",
-            "displayName": "Ethereum Dolar"
-          },
-          {
-            "name": "COINBASE:DOGEUSD",
-            "displayName": "Dogecoin Dolar"
-          },
-          {
-            "name": "BINANCE:XRPUSD",
-            "displayName": "Xrp Dolar"
-          },
-          {
-            "name": "COINBASE:SUIUSD",
-            "displayName": "Sui Dolar"
-          }
-        ]
-      }
-    ],
-    "showSymbolLogo": true,
-    "isTransparent": true,
-    "colorTheme": "light",
-    "locale": "br"
-  }
-    </script>
-  </div>
-  
+        <label for="aporte">Aporte Mensal:</label>
+        <input type="number" id="aporte" placeholder="R$" required>
+
+        <label for="taxa">Taxa de Juros:</label>
+        <input type="number" id="taxa" placeholder="%" required>
+        <select id="tipoTaxa">
+            <option value="mensal">Mensal</option>
+            <option value="anual">Anual</option>
+        </select>
+
+        <label for="periodo">Período:</label>
+        <input type="number" id="periodo" placeholder="Meses ou Anos" required>
+        <select id="tipoPeriodo">
+            <option value="meses">Meses</option>
+            <option value="anos">Anos</option>
+        </select>
+
+        <button id="calcular">Calcular</button>
+        <button id="limpar">Limpar</button>
+
+        <div id="resultados" style="margin-top: 20px;">
+            <div id="resumo">
+                <div><strong>Valor total final:</strong> <span id="valorFinal">-</span></div>
+                <div><strong>Valor total investido:</strong> <span id="valorInvestido">-</span></div>
+                <div><strong>Total em juros:</strong> <span id="totalJuros">-</span></div>
+            </div>
+
+            <div id="graficoContainer">
+                <h2>Gráfico:</h2>
+                <canvas id="graficoEvolucao"></canvas>
+            </div>
+
+            <div id="tabelaResultados">
+                <h2>Tabela:</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Mês</th>
+                            <th>Juros</th>
+                            <th>Total Investido</th>
+                            <th>Total Juros</th>
+                            <th>Total Acumulado</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabelaBody"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
