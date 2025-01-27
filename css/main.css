@@ -1,0 +1,96 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family:'Roboto Condensed',sans-serif;
+}
+body {
+    position: relative;
+    margin: 0;
+    height: 100vh;
+  }
+  
+  body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(../img/fundo-pergunta-perfil-investimento.jpg);
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    opacity: 0.4; /* Controla a opacidade */
+    z-index: -1; /* Mantém a imagem atrás do conteúdo */
+  }
+header > .interface {
+    background-color: #d9f4e0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 0px;
+    margin: auto;
+  }
+  header .logo a img{
+    height: 10vh;
+    width: 30vh;
+  }
+  header .logo a img:hover{
+    transform: scale(1.1);
+    transition: 0.2s;
+  }
+  header a {
+    color: #fff;
+    text-decoration: none;
+    display: inline-block;
+  }
+  header nav.navegacao ul {
+    padding: auto;
+    list-style: none;
+  }
+  header nav.navegacao ul li {
+    display: inline-block;
+    padding: 0 80px;
+    text-transform: uppercase;
+  }
+  header nav.navegacao ul li a {
+    color: #000000;
+    padding: 10px;
+    border-radius: 20px;
+  }
+  header nav.navegacao ul li a:hover {
+    background-color: #3ff166;
+    color: #000000;
+    transform: scale(1.05);
+    transition: 0.2s;
+  }
+
+header .pergunta_perfil{
+    margin-top: 30vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #3ff166;
+}
+header .pergunta_perfil h1{
+    font-size: 70px;
+}
+
+
+header .pergunta_perfil .perfis{
+    display: flex;
+    list-style: none;
+    padding: auto;
+    text-transform: uppercase;
+    gap: 40px;
+    margin-top: 30px;
+    font-size: 50px;
+}
+
+header .pergunta_perfil .perfis li a:hover{
+    transform: scale(1.05);
+    transition: 0.2s;
+    background-color: #b7e6c4d2;
+    border-radius: 20px;
+}
