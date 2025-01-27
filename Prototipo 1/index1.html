@@ -3,171 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta id="token" content="dd24cd45-b1e6-407e-ba6b-a571f6c7beef">
-    <title>VisionVest - Investimentos Inteligentes</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>Perfil de Investidor</title>
     <script src="https://unpkg.com/vue@3.5.13/dist/vue.global.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@tailwindcss/typography/dist/typography.min.css" rel="stylesheet">
+    <meta id="token" content="dd24cd45-b1e6-407e-ba6b-a571f6c7beef">
 </head>
-<body class="bg-white">
-    <div id="app">
-        <header class="bg-green-600 text-white">
-            <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-                <div class="flex items-center">
-                    <img src="logo.png" alt="VisionVest Logo" class="h-12">
-                </div>
-                <div class="flex space-x-8">
-                    <a href="#quem-somos" class="hover:text-green-200">Quem somos nós?</a>
-                    <a href="contato.html" class="hover:text-green-200">Fale conosco</a>
-                    <a href="#calculadora" class="hover:text-green-200">Calculadora de juros</a>
-                </div>
-            </nav>
-        </header>
+<body class="bg-gray-100 min-h-screen">
 
-        <main>
-            <section id="sobre" class="py-16">
-                <div class="container mx-auto px-6">
-                    <h2 class="text-3xl font-bold text-green-600 mb-8">Sobre nós</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                        <div>
-                            <p class="text-gray-700 leading-relaxed">
-                                A VisionVest é uma plataforma inovadora que combina tecnologia e inteligência financeira para ajudar investidores a identificar seu perfil de investimento e explorar tendências de mercado. Com ferramentas personalizadas e insights claros, empoderamos nossos usuários a tomar decisões estratégicas, maximizando resultados e alinhando seus objetivos financeiros às oportunidades do mercado.
-                            </p>
-                        </div>
-                        <div class="flex justify-center">
-                            <img src="about-image.jpg" alt="Sobre a VisionVest" class="rounded-lg shadow-lg">
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="missao" class="bg-gray-50 py-16">
-                <div class="container mx-auto px-6">
-                    <h2 class="text-3xl font-bold text-green-600 mb-8">Nossa missão</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                        <div class="flex justify-center">
-                            <img src="mission-image.jpg" alt="Nossa Missão" class="rounded-lg shadow-lg">
-                        </div>
-                        <div>
-                            <p class="text-gray-700 leading-relaxed">
-                                Nossa missão é transformar a maneira como as pessoas investem, oferecendo uma plataforma que combina tecnologia de ponta e inteligência financeira. Buscamos empoderar nossos usuários, ajudando-os a identificar seus perfis de investimento, explorar tendências de mercado e tomar decisões estratégicas alinhadas aos seus objetivos financeiros. Na VisionVest, trabalhamos para tornar o investimento acessível, claro e eficiente para todos.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="historia" class="py-16">
-                <div class="container mx-auto px-6">
-                    <h2 class="text-3xl font-bold text-green-600 mb-8">Nossa história</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                        <div>
-                            <p class="text-gray-700 leading-relaxed">
-                                A VisionVest nasceu da união entre tecnologia e finanças, com o propósito de simplificar e revolucionar o mundo dos investimentos. Desde o início, acreditamos que cada investidor, independentemente de sua experiência, merece acesso a ferramentas personalizadas e informações confiáveis para alcançar seus objetivos financeiros. Nossa jornada tem sido guiada pela inovação, pela confiança de nossos usuários e pelo compromisso de oferecer soluções que realmente façam a diferença. Hoje, somos uma plataforma reconhecida por conectar investidores às melhores oportunidades do mercado, construindo um futuro financeiro mais estratégico e promissor.
-                            </p>
-                        </div>
-                        <div class="flex justify-center">
-                            <img src="history-image.jpg" alt="Nossa História" class="rounded-lg shadow-lg">
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="valores" class="bg-gray-50 py-16">
-                <div class="container mx-auto px-6">
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-                        <div class="text-center">
-                            <div class="bg-green-600 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                                <img src="trust-icon.png" alt="Confiabilidade" class="w-8 h-8">
-                            </div>
-                            <h3 class="font-semibold">Confiabilidade</h3>
-                        </div>
-                        <div class="text-center">
-                            <div class="bg-green-600 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                                <img src="security-icon.png" alt="Segurança" class="w-8 h-8">
-                            </div>
-                            <h3 class="font-semibold">Segurança</h3>
-                        </div>
-                        <div class="text-center">
-                            <div class="bg-green-600 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                                <img src="quality-icon.png" alt="Qualidade" class="w-8 h-8">
-                            </div>
-                            <h3 class="font-semibold">Qualidade e excelência</h3>
-                        </div>
-                        <div class="text-center">
-                            <div class="bg-green-600 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                                <img src="innovation-icon.png" alt="Inovação" class="w-8 h-8">
-                            </div>
-                            <h3 class="font-semibold">Inovação e modernidade</h3>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </main>
-
-        <footer class="bg-green-600 text-white py-12">
-            <div class="container mx-auto px-6">
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                    <div>
-                        <h3 class="text-xl font-bold mb-4">A EMPRESA PARA INVESTIMENTOS</h3>
-                    </div>
-                    <div>
-                        <h4 class="font-semibold mb-4">Paraíba</h4>
-                        <p>email@gmail.com</p>
-                        <p>+55 (83)99999-9999</p>
-                        <p>Endereço</p>
-                    </div>
-                    <div>
-                        <h4 class="font-semibold mb-4">Rio de Janeiro</h4>
-                        <p>email@gmail.com</p>
-                        <p>+55 (21)99999-9999</p>
-                        <p>Endereço</p>
-                    </div>
-                    <div>
-                        <h4 class="font-semibold mb-4">Newsletter</h4>
-                        <p class="mb-4">Quer garantir os melhores investimentos?</p>
-                        <form @submit.prevent="subscribeNewsletter" class="flex">
-                            <input type="email" v-model="email" placeholder="Seu e-mail" class="p-2 rounded-l text-gray-800 w-full">
-                            <button type="submit" class="bg-white text-green-600 px-4 py-2 rounded-r font-semibold hover:bg-green-100">
-                                Assinar
-                            </button>
-                        </form>
-                        <div class="mt-6">
-                            <h4 class="font-semibold mb-2">Nos siga:</h4>
-                            <div class="flex space-x-4">
-                                <a href="#" class="hover:text-green-200"><img src="facebook-icon.png" alt="Facebook" class="w-6 h-6"></a>
-                                <a href="#" class="hover:text-green-200"><img src="instagram-icon.png" alt="Instagram" class="w-6 h-6"></a>
-                                <a href="#" class="hover:text-green-200"><img src="linkedin-icon.png" alt="LinkedIn" class="w-6 h-6"></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <div id="app" class="container mx-auto px-4 py-8">
+        <h1 class="text-4xl font-bold text-center mb-12">QUAL SEU PERFIL DE INVESTIDOR?</h1>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div @click="selectProfile('conservador')" 
+                 :class="['p-6 rounded-lg border-2 cursor-pointer transition-all duration-300 hover:shadow-lg', 
+                         selectedProfile === 'conservador' ? 'border-green-500 bg-green-50' : 'border-gray-200 bg-white']">
+                <h2 class="text-2xl font-semibold mb-4">Conservador</h2>
+                <p class="text-gray-600">Prefere segurança e está disposto a aceitar retornos menores para evitar riscos.</p>
             </div>
-        </footer>
+
+            <div @click="selectProfile('intermediario')"
+                 :class="['p-6 rounded-lg border-2 cursor-pointer transition-all duration-300 hover:shadow-lg',
+                         selectedProfile === 'intermediario' ? 'border-blue-500 bg-blue-50' : 'border-gray-200 bg-white']">
+                <h2 class="text-2xl font-semibold mb-4">Intermediário</h2>
+                <p class="text-gray-600">Busca equilíbrio entre segurança e rentabilidade, aceitando riscos moderados.</p>
+            </div>
+
+            <div @click="selectProfile('agressivo')"
+                 :class="['p-6 rounded-lg border-2 cursor-pointer transition-all duration-300 hover:shadow-lg',
+                         selectedProfile === 'agressivo' ? 'border-red-500 bg-red-50' : 'border-gray-200 bg-white']">
+                <h2 class="text-2xl font-semibold mb-4">Agressivo</h2>
+                <p class="text-gray-600">Busca maiores retornos e está disposto a aceitar mais riscos e volatilidade.</p>
+            </div>
+        </div>
     </div>
 
+    
     <script type="module">
         import { getSDK } from "https://webdraw.com/webdraw-sdk";
-        
         const { createApp, ref, onMounted } = Vue;
-        
+
         createApp({
             setup() {
-                const email = ref('');
-                
-                onMounted(async () => {
-                    const sdk = await getSDK();
-                });
-                
-                const subscribeNewsletter = async () => {
-                    if (!email.value) return;
-                    // Add newsletter subscription logic here
-                    email.value = '';
-                    alert('Obrigado por se inscrever!');
+                const selectedProfile = ref(null);
+
+                const selectProfile = (profile) => {
+                    selectedProfile.value = profile;
                 };
-                
+
                 return {
-                    email,
-                    subscribeNewsletter
+                    selectedProfile,
+                    selectProfile
                 };
             }
         }).mount('#app');
