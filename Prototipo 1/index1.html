@@ -10,7 +10,18 @@
     <meta id="token" content="dd24cd45-b1e6-407e-ba6b-a571f6c7beef">
 </head>
 <body class="bg-gray-100 min-h-screen">
-
+    <header class="bg-green-600 text-white">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <a href="index1.html"> <img src="img/1 vision txt.png" alt="" width="200vw"></a>
+            </div>
+            <div class="flex space-x-8">
+                <a href="sobre.html" class="hover:text-green-200">Quem somos nós?</a>
+                <a href="contato.html" class="hover:text-green-200">Fale conosco</a>
+                <a href="#calculadora" class="hover:text-green-200">Calculadora de juros</a>
+            </div>
+        </nav>
+    </header>
     <div id="app" class="container mx-auto px-4 py-8">
         <h1 class="text-4xl font-bold text-center mb-12">QUAL SEU PERFIL DE INVESTIDOR?</h1>
         
@@ -37,6 +48,46 @@
             </div>
         </div>
     </div>
+
+    <footer class="bg-green-600 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">A EMPRESA PARA INVESTIMENTOS</h3>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Paraíba</h4>
+                    <p>email@gmail.com</p>
+                    <p>+55 (83)99999-9999</p>
+                    <p>Endereço</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Rio de Janeiro</h4>
+                    <p>email@gmail.com</p>
+                    <p>+55 (21)99999-9999</p>
+                    <p>Endereço</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Newsletter</h4>
+                    <p class="mb-4">Quer garantir os melhores investimentos?</p>
+                    <form @submit.prevent="subscribeNewsletter" class="flex">
+                        <input type="email" v-model="email" placeholder="Seu e-mail" class="p-2 rounded-l text-gray-800 w-full">
+                        <button type="submit" class="bg-white text-green-600 px-4 py-2 rounded-r font-semibold hover:bg-green-100">
+                            Assinar
+                        </button>
+                    </form>
+                    <div class="mt-6">
+                        <h4 class="font-semibold mb-2">Nos siga:</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="hover:text-green-200"><img src="facebook-icon.png" alt="Facebook" class="w-6 h-6"></a>
+                            <a href="#" class="hover:text-green-200"><img src="instagram-icon.png" alt="Instagram" class="w-6 h-6"></a>
+                            <a href="#" class="hover:text-green-200"><img src="linkedin-icon.png" alt="LinkedIn" class="w-6 h-6"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     
     <script type="module">
