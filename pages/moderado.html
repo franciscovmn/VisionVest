@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investidor Moderado AI</title>
+    <meta name="description" content="Ferramentas de IA para Investidores Moderados">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+    <script src="https://unpkg.com/vue@3.5.13/dist/vue.global.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@tailwindcss/typography/dist/typography.min.css" rel="stylesheet">
+    <meta id="token" content="dd24cd45-b1e6-407e-ba6b-a571f6c7beef">
+</head>
+<body class="bg-black min-h-screen text-white">
+    <div id="app" class="container mx-auto px-4 py-8">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-4xl font-bold text-center mb-8 text-blue-500">Investidor Moderado AI</h1>
+            <div class="bg-gray-900 rounded-lg shadow-lg p-6 border border-red-600">
+                <div class="mb-6">
+                    <label class="block text-blue-500 text-sm font-bold mb-2" for="model">
+                        Selecione a Estratégia
+                    </label>
+                    <select v-model="selectedModel" id="model" class="w-full px-3 py-2 border border-blue-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 bg-gray-800 text-white">
+                        <option value="balanced">Carteira Balanceada</option>
+                        <option value="dividend">Dividendos Consistentes</option>
+                        <option value="mixed">Renda Fixa + Variável</option>
+                        <option value="fii">Fundos Imobiliários</option>
+                    </select>
+                </div>
+                <div class="bg-gray-900 p-6 rounded-lg border border-blue-500">
+                    <h3 class="text-xl font-bold mb-4 text-blue-500">Análise Fundamentalista</h3>
+                    <p class="text-gray-300">Indicadores fundamentalistas e análise de empresas para investimentos de médio e longo prazo.</p>
+                        Descreva sua estratégia
+                    </label>
+                    <textarea 
+                        v-model="prompt" 
+                        id="prompt"
+                        class="w-full px-3 py-2 border border-blue-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 bg-gray-800 text-white"
+                        rows="4"
+                        placeholder="Ex: Busco uma carteira diversificada com foco em dividendos..."
+                        @keyup.enter="generateStrategy"
+                    ></textarea>
+                </div>
+
+                <button 
+                    @click="generateStrategy"
+                    :disabled="isGenerating"
+                    class="w-full bg-blue-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50"
+                >
+                    {{ isGenerating ? 'Analisando...' : 'Analisar Estratégia' }}
+                </button>
+
+                <div v-if="isGenerating" class="mt-4">
+                    <div class="w-full bg-gray-200 rounded-full h-2.5">
+                        <div class="bg-blue-600 h-2.5 rounded-full" :style="{ width: progress + '%' }"></div>
+                    </div>
+                </div>
+
+                <div v-if="generatedStrategy" class="mt-6">
+                    <h2 class="text-xl font-bold mb-4 text-blue-500">Análise da Estratégia:</h2>
+                    <pre class="bg-gray-800 text-white p-4 rounded-lg overflow-x-auto border border-red-600">
+                        <code>{{ generatedStrategy }}</code>
+                    </pre>
+                    <button 
+                        @click="copyToClipboard"
+                        class="mt-4 bg-blue-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    >
+                        Copiar Estratégia
+                    </button>
+                </div>
+            </div>
+            
+            <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-gray-900 p-6 rounded-lg border border-blue-500">
+                    <h3 class="text-xl font-bold mb-4 text-blue-500">Diversificação</h3>
+                    <p class="text-gray-300">Análises e métricas para uma carteira equilibrada com risco moderado.</p>
+                </div>
+                <div class="bg-gray-900 p-6 rounded-lg border border-green-500">
+                    <h3 class="text-xl font-bold mb-4 text-green-500">Sinais Técnicos</h3>
+                    <p class="text-gray-300">Indicadores e padrões gráficos otimizados para operações de curto prazo.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { getSDK } from "https://webdraw.com/webdraw-sdk";
+        const { createApp, ref, onMounted } = Vue;
+
+        createApp({
+            setup() {
+                const selectedModel = ref('balanced');
+                const prompt = ref('');
+                const generatedStrategy = ref('');
+                const isGenerating = ref(false);
+                const progress = ref(0);
+                let progressInterval;
+                
+                const startProgress = () => {
+                    progress.value = 0;
+                    const totalTime = 30;
+                    const increment = 100 / totalTime;
+                    
+                    progressInterval = setInterval(() => {
+                        if (progress.value < 95) {
+                            progress.value += increment;
+                        }
+                    }, 1000);
+                };
+
+                const stopProgress = () => {
+                    clearInterval(progressInterval);
+                    progress.value = 100;
+                };
+
+                const generateStrategy = async () => {
+                    if (!prompt.value.trim()) {
+                        alert('Please enter a prompt');
+                        return;
+                    }
+
+                    isGenerating.value = true;
+                    startProgress();
+
+                    try {
+                        const sdk = await getSDK();
+                        const response = await sdk.fetch("https://webdraw.com/api/generate?task=text", {
+                            method: "POST",
+                            body: JSON.stringify({
+                                model: selectedModel.value,
+                                messages: [{
+                                    role: "user",
+                                    content: prompt.value
+                                }]
+                            })
+                        });
+
+                        const data = JSON.parse(response.body);
+                        generatedStrategy.value = data.text;
+                    } catch (error) {
+                        console.error('Erro ao gerar estratégia:', error);
+                        alert('Erro ao analisar estratégia. Tente novamente.');
+                    } finally {
+                        isGenerating.value = false;
+                        stopProgress();
+                    }
+                };
+
+                const copyToClipboard = async () => {
+                    try {
+                        await navigator.clipboard.writeText(generatedStrategy.value);
+                        alert('Estratégia copiada!');
+                    } catch (err) {
+                        console.error('Failed to copy:', err);
+                        alert('Falha ao copiar estratégia');
+                    }
+                };
+
+                return {
+                    selectedModel,
+                    prompt,
+                    generatedStrategy,
+                    isGenerating,
+                    progress,
+                    generateStrategy,
+                    copyToClipboard
+                };
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>
