@@ -1,42 +1,26 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/main.css">
-    <script src="script.js" defer></script>
-    <title>VisionVest</title>
-    <!--GOOGLE FONTS-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@500&display=swap" rel="stylesheet">
-    <!--GOOGLE FONTS-->
-    <!--BOOTSTRAP-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <!--BOOTSTRAP-->
-    <!--GOOGLE ICONS-->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <!--GOOGLE ICONS-->
+    <title>Perfil de Investidor</title>
+    <script src="https://unpkg.com/vue@3.5.13/dist/vue.global.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@tailwindcss/typography/dist/typography.min.css" rel="stylesheet">
+    <meta id="token" content="dd24cd45-b1e6-407e-ba6b-a571f6c7beef">
 </head>
-
-<body> 
-    <header>
-        <div class="interface">
-            
-            <div class="logo">
-                <a href="#"><img src="img/1 vision txt preto.png" alt=""></a>
-            </div><!--LOGO-->
-
-            <nav class="navegacao">
-                <ul>
-                    <li><a href="#contato">Quem somos nós ?</a></li>
-                    <li><a href="#entre-em-contato">Fale conosco</a></li>
-                    <li><a href="teste/index.html">Nossas calculadoras</a></li>
-                </ul>
-                
-            </nav><!--navegacao-->     
-                    <!-- TradingView Widget BEGIN --> 
-        </div><!--interface-->
+<body class="bg-gray-100 min-h-screen">
+    <header class="bg-green-600 text-white">
+        <nav class="container mx-auto px-6 py-5 flex justify-between items-center">
+            <div class="flex items-center">
+                <a href="index1.html"> <img src="img/1 vision txt.png" alt="" width="20vw"></a>
+            </div>
+            <div class="flex space-x-8">
+                <a href="sobre.html" class="hover:text-green-200">Quem somos nós?</a>
+                <a href="contato.html" class="hover:text-green-200">Fale conosco</a>
+                <a href="#calculadora" class="hover:text-green-200">Calculadora de juros</a>
+            </div>
+        </nav>
         <div class="tradingview-widget-container">
             <div class="tradingview-widget-container__widget"></div>
             <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
@@ -71,22 +55,93 @@
         }
             </script>
         </div>
-        <!-- TradingView Widget END -->
-   
-
-        <div class="pergunta_perfil">
-            <h1>QUAL O SEU PERFIL DE INVESTIMENTO ?</h1>
-
-            <ul class="perfis">
-                <li><a href="#contato">CONSERVADOR</a></li>
-                <li><a href="#entre-em-contato">MODERADO</a></li>
-                <li><a href="#calculadoras">AGRESSIVO</a></li>
-            </ul>
-
-
-        </div><!-- pergunta-perfil -->
     </header>
+    <div id="app" class="container mx-auto px-5 py-8">
+        <h1 class="text-4xl font-bold text-center mb-12">QUAL SEU PERFIL DE INVESTIDOR?</h1>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div @click="selectProfile('conservador')" 
+                 :class="['p-6 rounded-lg border-2 cursor-pointer transition-all duration-300 hover:shadow-lg', 
+                         selectedProfile === 'conservador' ? 'border-green-500 bg-green-50' : 'border-gray-200 bg-white']">
+                <h2 class="text-2xl font-semibold mb-4">Conservador</h2>
+                <p class="text-gray-600">Prefere segurança e está disposto a aceitar retornos menores para evitar riscos.</p>
+            </div>
 
+            <div @click="selectProfile('intermediario')"
+                 :class="['p-6 rounded-lg border-2 cursor-pointer transition-all duration-300 hover:shadow-lg',
+                         selectedProfile === 'intermediario' ? 'border-blue-500 bg-blue-50' : 'border-gray-200 bg-white']">
+                <h2 class="text-2xl font-semibold mb-4">Intermediário</h2>
+                <p class="text-gray-600">Busca equilíbrio entre segurança e rentabilidade, aceitando riscos moderados.</p>
+            </div>
 
+            <div @click="selectProfile('agressivo')"
+                 :class="['p-6 rounded-lg border-2 cursor-pointer transition-all duration-300 hover:shadow-lg',
+                         selectedProfile === 'agressivo' ? 'border-red-500 bg-red-50' : 'border-gray-200 bg-white']">
+                <h2 class="text-2xl font-semibold mb-4">Agressivo</h2>
+                <p class="text-gray-600">Busca maiores retornos e está disposto a aceitar mais riscos e volatilidade.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-green-600 text-white py-2">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">A EMPRESA PARA INVESTIMENTOS</h3>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Paraíba</h4>
+                    <p>email@gmail.com</p>
+                    <p>+55 (83)99999-9999</p>
+                    <p>Endereço</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Rio de Janeiro</h4>
+                    <p>email@gmail.com</p>
+                    <p>+55 (21)99999-9999</p>
+                    <p>Endereço</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Newsletter</h4>
+                    <p class="mb-4">Quer garantir os melhores investimentos?</p>
+                    <form @submit.prevent="subscribeNewsletter" class="flex">
+                        <input type="email" v-model="email" placeholder="Seu e-mail" class="p-2 rounded-l text-gray-800 w-full">
+                        <button type="submit" class="bg-white text-green-600 px-4 py-2 rounded-r font-semibold hover:bg-green-100">
+                            Assinar
+                        </button>
+                    </form>
+                    <div class="mt-6">
+                        <h4 class="font-semibold mb-2">Nos siga:</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="hover:text-green-200"><img src="img/facebook.png" alt="Facebook" class="w-6 h-6"></a>
+                            <a href="#" class="hover:text-green-200"><img src="img/12461249-m-removebg-preview.png" alt="Instagram" class="w-6 h-6"></a>
+                            <a href="#" class="hover:text-green-200"><img src="img/linkedin-removebg-preview (1).png" alt="LinkedIn" class="w-6 h-6"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    
+    <script type="module">
+        import { getSDK } from "https://webdraw.com/webdraw-sdk";
+        const { createApp, ref, onMounted } = Vue;
+
+        createApp({
+            setup() {
+                const selectedProfile = ref(null);
+
+                const selectProfile = (profile) => {
+                    selectedProfile.value = profile;
+                };
+
+                return {
+                    selectedProfile,
+                    selectProfile
+                };
+            }
+        }).mount('#app');
+    </script>
 </body>
 </html>
