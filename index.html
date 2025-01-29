@@ -7,83 +7,107 @@
     <script src="https://unpkg.com/vue@3.5.13/dist/vue.global.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/@tailwindcss/typography/dist/typography.min.css" rel="stylesheet">
-    <meta id="token" content="dd24cd45-b1e6-407e-ba6b-a571f6c7beef">
+    <link rel="stylesheet" href="css/main.css">
 </head>
-<body class="bg-gray-100 min-h-screen">
-    <header class="bg-green-600 text-white">
-        <nav class="container mx-auto px-6 py-5 flex justify-between items-center">
-            <div class="flex items-center">
-                <a href="index1.html"> <img src="img/1 vision txt.png" alt="" width="20vw"></a>
+<body class="bg-gray-100 min-h-screen flex flex-col">
+
+    <header class="bg-green-600 text-white h-[20vh] flex items-center">
+        <nav class="h-16 flex items-center justify-between bg-green-700 px-4 w-full">
+            <div class="h-full flex items-center">
+                <a href="index1.html">
+                    <img src="img/1 vision txt.png" alt="Logo" class="h-30 w-auto object-contain">
+                </a>
             </div>
-            <div class="flex space-x-8">
-                <a href="sobre.html" class="hover:text-green-200">Quem somos nós?</a>
-                <a href="contato.html" class="hover:text-green-200">Fale conosco</a>
-                <a href="#calculadora" class="hover:text-green-200">Calculadora de juros</a>
+            
+            <!-- Botão do Menu para Mobile -->
+            <button id="menu-button" class="md:hidden text-white focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>
+                </svg>
+            </button>
+    
+            <!-- Menu Normal (Desktop) -->
+            <div class="hidden md:flex space-x-8">
+                <a href="pages/sobre.html" class="hover:text-green-200">Quem somos nós?</a>
+                <a href="pages/contato.html" class="hover:text-green-200">Fale conosco</a>
+                <a href="pages/calculadora_inicial.html" class="hover:text-green-200">Calculadoras</a>
             </div>
+    
         </nav>
-        <div class="tradingview-widget-container">
-            <div class="tradingview-widget-container__widget"></div>
-            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
-            {
-            "symbols": [
-            {
-                "proName": "FOREXCOM:SPXUSD",
-                "title": "S&P 500 Index"
-            },
-            {
-                "proName": "FOREXCOM:NSXUSD",
-                "title": "US 100 Cash CFD"
-            },
-            {
-                "proName": "FX_IDC:EURUSD",
-                "title": "EUR to USD"
-            },
-            {
-                "proName": "BITSTAMP:BTCUSD",
-                "title": "Bitcoin"
-            },
-            {
-                "proName": "BITSTAMP:ETHUSD",
-                "title": "Ethereum"
-            }
-            ],
-            "showSymbolLogo": true,
-            "isTransparent": false,
-            "displayMode": "adaptive",
-            "colorTheme": "light",
-            "locale": "en"
-        }
-            </script>
+    
+        <!-- Menu Mobile -->
+        <div id="mobile-menu" class="hidden absolute top-20 left-0 w-full bg-green-700 md:hidden flex flex-col items-center space-y-7 py-7">
+            <a href="pages/sobre.html" class="text-white hover:text-green-200">Quem somos nós?</a>
+            <a href="pages/contato.html" class="text-white hover:text-green-200">Fale conosco</a>
+            <a href="pages/calculadora_inicial.html" class="text-white hover:text-green-200">Calculadoras</a>
         </div>
     </header>
-    <div id="app" class="container mx-auto px-5 py-8">
-        <h1 class="text-4xl font-bold text-center mb-12">QUAL SEU PERFIL DE INVESTIDOR?</h1>
-        
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div @click="selectProfile('conservador')" 
-                 :class="['p-6 rounded-lg border-2 cursor-pointer transition-all duration-300 hover:shadow-lg', 
-                         selectedProfile === 'conservador' ? 'border-green-500 bg-green-50' : 'border-gray-200 bg-white']">
-                <h2 class="text-2xl font-semibold mb-4">Conservador</h2>
-                <p class="text-gray-600">Prefere segurança e está disposto a aceitar retornos menores para evitar riscos.</p>
-            </div>
-
-            <div @click="selectProfile('intermediario')"
-                 :class="['p-6 rounded-lg border-2 cursor-pointer transition-all duration-300 hover:shadow-lg',
-                         selectedProfile === 'intermediario' ? 'border-blue-500 bg-blue-50' : 'border-gray-200 bg-white']">
-                <h2 class="text-2xl font-semibold mb-4">Intermediário</h2>
-                <p class="text-gray-600">Busca equilíbrio entre segurança e rentabilidade, aceitando riscos moderados.</p>
-            </div>
-
-            <div @click="selectProfile('agressivo')"
-                 :class="['p-6 rounded-lg border-2 cursor-pointer transition-all duration-300 hover:shadow-lg',
-                         selectedProfile === 'agressivo' ? 'border-red-500 bg-red-50' : 'border-gray-200 bg-white']">
-                <h2 class="text-2xl font-semibold mb-4">Agressivo</h2>
-                <p class="text-gray-600">Busca maiores retornos e está disposto a aceitar mais riscos e volatilidade.</p>
-            </div>
-        </div>
+    
+    <div class="tradingview-widget-container h-[10vh] bg-white flex items-center justify-center">
+        <div class="tradingview-widget-container__widget"></div>
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+        {
+        "symbols": [
+        {
+            "proName": "FOREXCOM:SPXUSD",
+            "title": "S&P 500 Index"
+        },
+        {
+            "proName": "FOREXCOM:NSXUSD",
+            "title": "US 100 Cash CFD"
+        },
+        {
+            "proName": "FX_IDC:EURUSD",
+            "title": "EUR to USD"
+        },
+        {
+            "proName": "BITSTAMP:BTCUSD",
+            "title": "Bitcoin"
+        },
+        {
+            "proName": "BITSTAMP:ETHUSD",
+            "title": "Ethereum"
+        }
+        ],
+        "showSymbolLogo": true,
+        "isTransparent": false,
+        "displayMode": "adaptive",
+        "colorTheme": "light",
+        "locale": "en"
+    }
+        </script>
     </div>
 
-    <footer class="bg-green-600 text-white py-2">
+    <main class="flex-1 flex items-center justify-center bg-gray-100 h-[70vh]">
+        <div id="app" class="container mx-auto px-5 py-8">
+            <h1 class="text-4xl font-bold text-center mb-12">QUAL SEU PERFIL DE INVESTIDOR?</h1>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div @click="selectProfile('conservador')" 
+                    :class="['p-6 rounded-lg border-2 cursor-pointer transition-all duration-300 hover:shadow-lg', 
+                            selectedProfile === 'conservador' ? 'border-green-500 bg-green-50' : 'border-gray-200 bg-white']">
+                    <a href="pages/conservador.html"><h2 class="text-2xl font-semibold mb-4">Conservador</h2></a>
+                    <p class="text-gray-600">Prefere segurança e está disposto a aceitar retornos menores para evitar riscos.</p>
+                </div>
+    
+                <div @click="selectProfile('intermediario')"
+                    :class="['p-6 rounded-lg border-2 cursor-pointer transition-all duration-300 hover:shadow-lg',
+                            selectedProfile === 'intermediario' ? 'border-blue-500 bg-blue-50' : 'border-gray-200 bg-white']">
+                    <a href="pages/moderado.html"><h2 class="text-2xl font-semibold mb-4">Moderado</h2></a>
+                    <p class="text-gray-600">Busca equilíbrio entre segurança e rentabilidade, aceitando riscos moderados.</p>
+                </div>
+    
+                <div @click="selectProfile('agressivo')"
+                    :class="['p-6 rounded-lg border-2 cursor-pointer transition-all duration-300 hover:shadow-lg',
+                            selectedProfile === 'agressivo' ? 'border-red-500 bg-red-50' : 'border-gray-200 bg-white']">
+                    <a href="pages/agressivo.html"><h2 class="text-2xl font-semibold mb-4">Agressivo</h2></a>
+                    <p class="text-gray-600">Busca maiores retornos e está disposto a aceitar mais riscos e volatilidade.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-green-600 text-white py-2 mt-auto">
         <div class="container mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div>
@@ -110,20 +134,11 @@
                             Assinar
                         </button>
                     </form>
-                    <div class="mt-6">
-                        <h4 class="font-semibold mb-2">Nos siga:</h4>
-                        <div class="flex space-x-4">
-                            <a href="#" class="hover:text-green-200"><img src="img/facebook.png" alt="Facebook" class="w-6 h-6"></a>
-                            <a href="#" class="hover:text-green-200"><img src="img/12461249-m-removebg-preview.png" alt="Instagram" class="w-6 h-6"></a>
-                            <a href="#" class="hover:text-green-200"><img src="img/linkedin-removebg-preview (1).png" alt="LinkedIn" class="w-6 h-6"></a>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
     </footer>
 
-    
     <script type="module">
         import { getSDK } from "https://webdraw.com/webdraw-sdk";
         const { createApp, ref, onMounted } = Vue;
@@ -143,5 +158,6 @@
             }
         }).mount('#app');
     </script>
+    <script src="js/menu.js"></script>
 </body>
 </html>

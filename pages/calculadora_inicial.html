@@ -3,13 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vis</title>
+    <title>Calculadora de Juros Compostos</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://unpkg.com/vue@3.5.13/dist/vue.global.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/@tailwindcss/typography/dist/typography.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="">
 </head>
 <body>
     <header class="bg-green-600 text-white h-[20vh] flex items-center">
@@ -29,21 +25,20 @@
     
             <!-- Menu Normal (Desktop) -->
             <div class="hidden md:flex space-x-8">
-                <a href="sobre.html" class="hover:text-green-200">Quem somos nós?</a>
-                <a href="contato.html" class="hover:text-green-200">Fale conosco</a>
-                <a href="../teste/index.html" class="hover:text-green-200">Calculadoras</a>
+                <a href="pages/sobre.html" class="hover:text-green-200">Quem somos nós?</a>
+                <a href="pages/contato.html" class="hover:text-green-200">Fale conosco</a>
+                <a href="pages/calculadora_inicial.html" class="hover:text-green-200">Calculadoras</a>
             </div>
     
         </nav>
     
         <!-- Menu Mobile -->
         <div id="mobile-menu" class="hidden absolute top-20 left-0 w-full bg-green-700 md:hidden flex flex-col items-center space-y-7 py-7">
-            <a href="sobre.html" class="text-white hover:text-green-200">Quem somos nós?</a>
-            <a href="contato.html" class="text-white hover:text-green-200">Fale conosco</a>
-            <a href="../teste/index.html" class="text-white hover:text-green-200">Calculadoras</a>
+            <a href="pages/sobre.html" class="text-white hover:text-green-200">Quem somos nós?</a>
+            <a href="pages/contato.html" class="text-white hover:text-green-200">Fale conosco</a>
+            <a href="pages/calculadora_inicial.html" class="text-white hover:text-green-200">Calculadoras</a>
         </div>
     </header>
-
     <main class="h-[70vh]">
         <div class="container">
             <h1>Calculadora de Juros Compostos</h1>
@@ -77,7 +72,7 @@
                     <div><strong>Total em juros:</strong> <span id="totalJuros">-</span></div>
                 </div>
     
-                <div id="graficoContainer" style="width: 80vw;">
+                <div id="graficoContainer">
                     <h2>Gráfico:</h2>
                     <canvas id="graficoEvolucao"></canvas>
                 </div>
@@ -100,7 +95,6 @@
             </div>
         </div>
     </main>
-    
     <footer class="bg-green-600 text-white py-2 mt-auto">
         <div class="container mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -132,26 +126,7 @@
             </div>
         </div>
     </footer>
-    <script type="module">
-        import { getSDK } from "https://webdraw.com/webdraw-sdk";
-        const { createApp, ref, onMounted } = Vue;
 
-        createApp({
-            setup() {
-                const selectedProfile = ref(null);
-
-                const selectProfile = (profile) => {
-                    selectedProfile.value = profile;
-                };
-
-                return {
-                    selectedProfile,
-                    selectProfile
-                };
-            }
-        }).mount('#app');
-    </script>
-    <script src="js/menu.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

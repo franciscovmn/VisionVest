@@ -1,172 +1,132 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Investidor Agressivo AI</title>
-    <meta name="description" content="Ferramentas de IA para Investidores Agressivos">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
-    <script src="https://unpkg.com/vue@3.5.13/dist/vue.global.js"></script>
+    <title>Investidor Agressivo - Perfil de Investimentos</title>
+    <meta name="description" content="Conheça o perfil do investidor agressivo e as melhores opções de investimentos para maximizar seus retornos">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/@tailwindcss/typography/dist/typography.min.css" rel="stylesheet">
-    <meta id="token" content="dd24cd45-b1e6-407e-ba6b-a571f6c7beef">
+    <script src="https://unpkg.com/vue@3.5.13/dist/vue.global.js"></script>
 </head>
-<body class="bg-white min-h-screen text-white">
-    <div id="app" class="container mx-auto px-4 py-8">
-        <div class="max-w-4xl mx-auto">
-            <h1 class="text-4xl font-bold text-center mb-8 text-black">Investidor Agressivo AI</h1>
-            <div class="bg-green-600 rounded-lg shadow-lg p-6 border ">
-                <div class="mb-6">
-                    <label class="block text-white text-sm font-bold mb-2" for="model">
-                        Selecione a Estratégia
-                    </label>
-                    <select v-model="selectedModel" id="model" class="w-full px-3 py-2 border border-green-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 bg-gray-800 text-white">
-                        <option value="day_trade">Day Trade - Alta Volatilidade</option>
-                        <option value="swing_trade">Swing Trade - Momentum</option>
-                        <option value="options">Opções - Alavancagem Máxima</option>
-                        <option value="crypto">Criptomoedas - 24/7</option>
-                    </select>
+<body class="bg-white">
+    <div id="app">
+        <!-- Header -->
+      <header class="bg-green-600 text-white h-[20vh] flex items-center">
+        <nav class="h-16 flex items-center justify-between bg-green-700 px-4 w-full">
+            <div class="h-full flex items-center">
+                <a href="index1.html">
+                    <img src="img/1 vision txt.png" alt="Logo" class="h-30 w-auto object-contain">
+                </a>
+            </div>
+            
+            <!-- Botão do Menu para Mobile -->
+            <button id="menu-button" class="md:hidden text-white focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>
+                </svg>
+            </button>
+    
+            <!-- Menu Normal (Desktop) -->
+            <div class="hidden md:flex space-x-8">
+                <a href="sobre.html" class="hover:text-green-200">Quem somos nós?</a>
+                <a href="contato.html" class="hover:text-green-200">Fale conosco</a>
+                <a href="../index.html" class="hover:text-green-200">Calculadoras</a>
+            </div>
+    
+        </nav>
+    
+        <!-- Menu Mobile -->
+        <div id="mobile-menu" class="hidden absolute top-20 left-0 w-full bg-green-700 md:hidden flex flex-col items-center space-y-7 py-7">
+            <a href="sobre.html" class="text-white hover:text-green-200">Quem somos nós?</a>
+            <a href="contato.html" class="text-white hover:text-green-200">Fale conosco</a>
+            <a href="../index.html" class="text-white hover:text-green-200">Calculadoras</a>
+        </div>
+    </header>
+
+        <!-- Main Content -->
+        <main class="container mx-auto px-4 py-8">
+            <h1 class="text-4xl font-bold mb-6">Quem é o Investidor Agressivo?</h1>
+            
+            <p class="text-lg mb-8">
+                O investidor agressivo é aquele que busca maximizar seus retornos, mesmo que para isso precise assumir riscos elevados. Ele está disposto a lidar com a volatilidade do mercado e, muitas vezes, investe em ativos mais arriscados, como ações, criptomoedas e derivativos. Esse perfil tem um amplo conhecimento do mercado financeiro e foca no longo prazo para obter altos ganhos.
+            </p>
+
+            <h2 class="text-3xl font-bold mb-6">Opções de Investimentos Agressivos</h2>
+            <p class="text-lg mb-6">Os investidores agressivos diversificam a carteira com ativos de alto potencial de retorno, incluindo:</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                <div class="border p-4 rounded">
+                    <h3 class="font-bold mb-2">Ações de crescimento</h3>
+                    <p>Empresas inovadoras e com grande potencial de valorização.</p>
+                </div>
+                <div class="border p-4 rounded">
+                    <h3 class="font-bold mb-2">Small Caps</h3>
+                    <p>Empresas menores, mas com possibilidades de altos retornos.</p>
+                </div>
+                <div class="border p-4 rounded">
+                    <h3 class="font-bold mb-2">Fundos de ações e multimercado</h3>
+                    <p>Estratégias mais dinâmicas que podem gerar ganhos expressivos.</p>
+                </div>
+                <div class="border p-4 rounded">
+                    <h3 class="font-bold mb-2">Criptomoedas</h3>
+                    <p>Ativos digitais altamente voláteis, mas com grande potencial de valorização.</p>
+                </div>
+                <div class="border p-4 rounded">
+                    <h3 class="font-bold mb-2">Derivativos e Opções</h3>
+                    <p>Estratégias avançadas que permitem alavancagem e proteção da carteira.</p>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-green-600 text-white py-12">
+            <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h2 class="text-2xl font-bold mb-4">A EMPRESA PARA INVESTIMENTOS</h2>
                 </div>
                 
-                <div class="mb-6">
-                    <label class="block text-whitetext-sm font-bold mb-2" for="prompt">
-                        Descreva sua estratégia
-                    </label>
-                    <textarea 
-                        v-model="prompt" 
-                        id="prompt"
-                        class="w-full px-3 py-2 border border-green-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 bg-gray-800 text-white"
-                        rows="4"
-                        placeholder="Ex: Quero operar mini índice com stop de 100 pontos..."
-                        @keyup.enter="generateStrategy"
-                    ></textarea>
-                </div>
-
-                <button 
-                    @click="generateStrategy"
-                    :disabled="isGenerating"
-                    class="w-full bg-green-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 disabled:opacity-50"
-                >
-                    {{ isGenerating ? 'Analisando...' : 'Analisar Estratégia' }}
-                </button>
-
-                <div v-if="isGenerating" class="mt-4">
-                    <div class="w-full bg-gray-200 rounded-full h-2.5">
-                        <div class="bg-green-600 h-2.5 rounded-full" :style="{ width: progress + '%' }"></div>
+                <div class="grid grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="font-bold mb-2">Paraíba</h3>
+                        <p>email@gmail.com</p>
+                        <p>+55 (83)99999-9999</p>
+                        <p>Endereço</p>
+                        <a href="#" class="border-b">Veja no mapa</a>
+                    </div>
+                    <div>
+                        <h3 class="font-bold mb-2">Rio de Janeiro</h3>
+                        <p>email@gmail.com</p>
+                        <p>+55 (21)99999-9999</p>
+                        <p>Endereço</p>
+                        <a href="#" class="border-b">Veja no mapa</a>
                     </div>
                 </div>
 
-                <div v-if="generatedStrategy" class="mt-6">
-                    <h2 class="text-xl font-bold mb-4 text-green-500">Análise da Estratégia:</h2>
-                    <pre class="bg-gray-800 text-white p-4 rounded-lg overflow-x-auto border border-red-600">
-                        <code>{{ generatedStrategy }}</code>
-                    </pre>
-                    <button 
-                        @click="copyToClipboard"
-                        class="mt-4 bg-green-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500"
-                    >
-                        Copiar Estratégia
-                    </button>
+                <div>
+                    <h3 class="text-xl mb-4">Quer garantir os melhores investimentos?</h3>
+                    <h4 class="font-bold mb-2">Newsletter</h4>
+                    <div class="mb-4">
+                        <input type="email" placeholder="Seu e-mail" class="w-full p-2 text-black rounded">
+                    </div>
+                    <h4 class="font-bold mb-2">Nos siga:</h4>
+                    <div class="flex space-x-4">
+                        <!-- Add social media icons here -->
+                    </div>
                 </div>
             </div>
-            
-            <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bg-gray-900 p-6 rounded-lg border border-green-500">
-                    <h3 class="text-xl font-bold mb-4 text-green-500">Risco x Retorno</h3>
-                    <p class="text-gray-300">Análises e métricas de risco para operações agressivas com alto potencial de retorno.</p>
-                </div>
-                <div class="bg-gray-900 p-6 rounded-lg border border-green-500">
-                    <h3 class="text-xl font-bold mb-4 text-green-500">Sinais Técnicos</h3>
-                    <p class="text-gray-300">Indicadores e padrões gráficos otimizados para operações de curto prazo.</p>
-                </div>
-            </div>
-        </div>
+        </footer>
     </div>
 
-    <script type="module">
-        import { getSDK } from "https://webdraw.com/webdraw-sdk";
-        const { createApp, ref, onMounted } = Vue;
-
+    <script>
+        const { createApp } = Vue
+        
         createApp({
-            setup() {
-                const selectedModel = ref('day_trade');
-                const prompt = ref('');
-                const generatedStrategy = ref('');
-                const isGenerating = ref(false);
-                const progress = ref(0);
-                let progressInterval;
-                
-                const startProgress = () => {
-                    progress.value = 0;
-                    const totalTime = 30;
-                    const increment = 100 / totalTime;
-                    
-                    progressInterval = setInterval(() => {
-                        if (progress.value < 95) {
-                            progress.value += increment;
-                        }
-                    }, 1000);
-                };
-
-                const stopProgress = () => {
-                    clearInterval(progressInterval);
-                    progress.value = 100;
-                };
-
-                const generateStrategy = async () => {
-                    if (!prompt.value.trim()) {
-                        alert('Please enter a prompt');
-                        return;
-                    }
-
-                    isGenerating.value = true;
-                    startProgress();
-
-                    try {
-                        const sdk = await getSDK();
-                        const response = await sdk.fetch("https://webdraw.com/api/generate?task=text", {
-                            method: "POST",
-                            body: JSON.stringify({
-                                model: selectedModel.value,
-                                messages: [{
-                                    role: "user",
-                                    content: prompt.value
-                                }]
-                            })
-                        });
-
-                        const data = JSON.parse(response.body);
-                        generatedStrategy.value = data.text;
-                    } catch (error) {
-                        console.error('Erro ao gerar estratégia:', error);
-                        alert('Erro ao analisar estratégia. Tente novamente.');
-                    } finally {
-                        isGenerating.value = false;
-                        stopProgress();
-                    }
-                };
-
-                const copyToClipboard = async () => {
-                    try {
-                        await navigator.clipboard.writeText(generatedStrategy.value);
-                        alert('Estratégia copiada!');
-                    } catch (err) {
-                        console.error('Failed to copy:', err);
-                        alert('Falha ao copiar estratégia');
-                    }
-                };
-
+            data() {
                 return {
-                    selectedModel,
-                    prompt,
-                    generatedStrategy,
-                    isGenerating,
-                    progress,
-                    generateStrategy,
-                    copyToClipboard
-                };
+                    // Add reactive data here if needed
+                }
             }
-        }).mount('#app');
+        }).mount('#app')
     </script>
 </body>
 </html>
