@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Juros Compostos</title>
+    <meta name="description" content="Calculadora de juros compostos com aportes mensais">
+    <script src="https://unpkg.com/vue@3.5.13/dist/vue.global.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAABKJJREFUWEe9l1tsVFUUhr+1z5lOO51OO1MGSlsqCBQQEBQhgIkmxgsxUfFBE2M0Jj4YNdEH9UF98cELGk18MB2NJhofvEQTjYmJGhOUEDWCEAigXAQECm2h0+l0bp2zl1ln2jndM3M6YOKTk5PJnLP3+vZa/1p7H8H/fIkH8b906XJ6f38/1dXVDA0N8dLrb1gF27NdXZ3s3rWTkZFRYrEYe/e9Sn//AMuWLePNt97h4P59vPDsi4yOjrJ3716OHj3K1NQUjz32KPv376e+vp6BgQH27dvHiRMnqKurY8+ePRw+fJhEIsGuXbtob29nZGSEzs5O3nv/A44dO8aWLVt47733aGxsZHBwkN27d3Py5EmWLFnCG2+9zeHvv2P7E0+yvKmJvr4+Nm/ezKlTp1i5ciUHDhzg+++OsG3bNnp6emhububQoUNUVVWxY8cOjh8/TjKZZOfOnbS1tTE8PMz69es5cOAA8XicJ596mp6eM6xatYqDBw/S2trKli1b6O3tZd26dRw4cICqqip27tzJsWPHSKVS7Nq1i7a2NoaGhli/YQPvf/QhTU1NXLhwgccff5wzZ86wevVq3n33XVpbW9m6dSu9vb2sXbuWgwcPEo/H2b59O8ePHyeVSrFjxw7a29sZGhqipaWFjz/5mMbGRs6fP8+2bdvo6+ujubmZ999/n5aWFrZu3cq5c+dYs2YNhw4dIhaLsX37dk6cOEE6nWbHjh20t7czPDzM+vXr+fTTT2loaODcuXNs376dvr4+mpqa+OCDD2hpaaGtrY1z586xevVqDh8+jOM4bNu2jZMnT5JOp9m+fTsdHR0MDw/T0tLCZ599Rn19PWfPnmXHjh309/fT2NjIhx9+SHNzM21tbZw/f55Vq1Zx5MgRpJQ88cQTnDp1inQ6zfbt2+no6GB4eJi1a9fy+eef8/DDD3P27Fl27NjBwMAA9fX1fPTRRzQ1NdHe3s6FCxdYuXIlR44cQQjBE088walTp8hkMuzYsYPOzk6Gh4dpbm7miy++oK6ujt7eXnbu3MnAwAB1dXV8/PHHNDY20tHRwcWLF1mxYgU//PADQgi2bt3K6dOnSafTPPvcc3R2djIyMkJTUxNffvklNTU19Pb28uyzzzI4OEhtbS2ffPIJDQ0NdHZ2cunSJZYvX86PP/6IlJLHHnuMs2fPkkql2LVrF11dXYyMjNDY2MhXX31FIpGgt7eX5557jqGhIWpqavj000+pr6+nq6uLy5cvs2zZMn766SeEEGzevJne3l5SqRTPP/88XV1djI6O0tDQwNdff00ikeDChQu88MILjIyMUF1dzWeffUZdXR3d3d1cuXKFpUuX8vPPPyOlZNOmTZw/f550Os2LL75Id3c3o6OjLF26lG+++YZEIsGFCxd46aWXGB0dJZlM8sUXX1BbW0tPTw9Xr15lyZIl/PLLL0gp2bhxIxcvXiSTyfDyyy/T09PD2NgYtbW1fPvttyQSCfr7+3nllVcYGxsjkUjw1VdfUVNTQ09PD9euXWPx4sX8+uuvSCnZsGEDly5dIpPJ8Oqrr3LmzBnGxsaoqanh8OHDxONxBgYGeO2115iYmCCRSPDNN99QXV1NT08P169fp6qqit9++w0pJevWraO/v59MJsPrr7/O2bNnGR8fp7q6mu+++454PM7g4CCvv/46k5OTJJNJvv32WxKJBL29vdy4cYNkMsnvv/+OEILm5mb+/PNPMpkMb7/9NufPn2d8fJxEIsHvAH8BQr+Zl+UOQSAAAAAASUVORK5CYII=">
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <div id="app" class="container mx-auto px-4 py-8">
+        <div class="bg-white rounded-lg shadow-lg p-6">
+            <h1 class="text-2xl font-bold mb-6 text-center">Calculadora de Juros Compostos</h1>
+            <hr class="mb-6">
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Aporte Inicial</label>
+                    <div class="mt-1 relative rounded-md shadow-sm">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <span class="text-gray-500 sm:text-sm">R$</span>
+                        </div>
+                        <input type="number" v-model="aporteInicial" class="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-12 pr-12 sm:text-sm border-gray-300 rounded-md" placeholder="0.00">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Aporte Mensal</label>
+                    <div class="mt-1 relative rounded-md shadow-sm">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <span class="text-gray-500 sm:text-sm">R$</span>
+                        </div>
+                        <input type="number" v-model="aporteMensal" class="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-12 pr-12 sm:text-sm border-gray-300 rounded-md" placeholder="0.00">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Taxa de Juros</label>
+                    <div class="flex gap-4">
+                        <div class="flex-1">
+                            <input type="number" v-model="taxaJuros" class="focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md" placeholder="0.00">
+                        </div>
+                        <div class="flex gap-2">
+                            <button @click="periodoJuros = 'anual'" :class="{'bg-blue-500 text-white': periodoJuros === 'anual'}" class="px-3 py-1 rounded border">Anual</button>
+                            <button @click="periodoJuros = 'mensal'" :class="{'bg-blue-500 text-white': periodoJuros === 'mensal'}" class="px-3 py-1 rounded border">Mensal</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Tempo</label>
+                    <div class="flex gap-4">
+                        <div class="flex-1">
+                            <input type="number" v-model="tempo" class="focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md" placeholder="0">
+                        </div>
+                        <div class="flex gap-2">
+                            <button @click="periodoTempo = 'anos'" :class="{'bg-blue-500 text-white': periodoTempo === 'anos'}" class="px-3 py-1 rounded border">Anos</button>
+                            <button @click="periodoTempo = 'meses'" :class="{'bg-blue-500 text-white': periodoTempo === 'meses'}" class="px-3 py-1 rounded border">Meses</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex justify-end gap-4 mt-6">
+                <button @click="calcular" class="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-md">
+                    <span v-if="!loading">Calcular</span>
+                    <span v-else class="inline-block animate-spin">↻</span>
+                </button>
+                <button @click="limpar" class="bg-red-500 hover:bg-red-600 text-white px-6 py-2 rounded-md">Limpar</button>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+                <div v-if="resultados.valorTotalFinal > 0" class="border rounded-lg p-4">
+                    <h3 class="text-lg font-medium mb-2">Valor Total Final</h3>
+                    <p class="text-2xl font-bold text-green-600">R$ {{ formatarMoeda(resultados.valorTotalFinal) }}</p>
+                </div>
+                <div v-if="resultados.valorTotalFinal > 0" class="border rounded-lg p-4">
+                    <h3 class="text-lg font-medium mb-2">Valor Investido</h3>
+                    <p class="text-2xl font-bold text-blue-600">R$ {{ formatarMoeda(resultados.valorInvestido) }}</p>
+                </div>
+                <div v-if="resultados.valorTotalFinal > 0" class="border rounded-lg p-4">
+                    <h3 class="text-lg font-medium mb-2">Valor dos Juros</h3>
+                    <p class="text-2xl font-bold text-purple-600">R$ {{ formatarMoeda(resultados.valorJuros) }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const { createApp } = Vue
+
+        createApp({
+            data() {
+                return {
+                    aporteInicial: null,
+                    aporteMensal: null,
+                    taxaJuros: null,
+                    periodoJuros: 'anual',
+                    tempo: null,
+                    periodoTempo: 'anos',
+                    loading: false,
+                    resultados: {
+                        valorTotalFinal: 0,
+                        valorInvestido: 0,
+                        valorJuros: 0
+                    }
+                }
+            },
+            methods: {
+                async calcular() {
+                    this.loading = true
+                    
+                    // Converter taxa de juros para mensal se necessário
+                    let taxaMensal = this.periodoJuros === 'anual' 
+                        ? (1 + this.taxaJuros/100)**(1/12) - 1 
+                        : this.taxaJuros/100
+
+                    // Converter tempo para meses
+                    let meses = this.periodoTempo === 'anos' 
+                        ? this.tempo * 12 
+                        : this.tempo
+
+                    // Cálculo dos juros compostos
+                    let montante = this.aporteInicial
+                    let totalInvestido = this.aporteInicial
+
+                    for(let i = 0; i < meses; i++) {
+                        montante = montante * (1 + taxaMensal) + this.aporteMensal
+                        totalInvestido += this.aporteMensal
+                    }
+
+                    // Simular delay para feedback visual
+                    await new Promise(resolve => setTimeout(resolve, 500))
+
+                    this.resultados = {
+                        valorTotalFinal: montante,
+                        valorInvestido: totalInvestido,
+                        valorJuros: montante - totalInvestido
+                    }
+
+                    this.loading = false
+                },
+                limpar() {
+                    this.aporteInicial = null
+                    this.aporteMensal = null
+                    this.taxaJuros = null
+                    this.tempo = null
+                    this.resultados = {
+                        valorTotalFinal: 0,
+                        valorInvestido: 0,
+                        valorJuros: 0
+                    }
+                },
+                formatarMoeda(valor) {
+                    return valor.toLocaleString('pt-BR', {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2
+                    })
+                }
+            }
+        }).mount('#app')
+    </script>
+</body>
+</html>
