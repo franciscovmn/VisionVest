@@ -45,99 +45,75 @@
             <a href="calculadoras.html" class="text-white hover:text-green-200">Calculadoras</a>
         </div>
     </header>
-
     <main>
-        <div id="app" class="container mx-auto px-4 py-8 max-w-4xl">
+        <div id="app" class="container mx-auto px-4 py-8">
             <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-6">
-                <h1 class="text-3xl font-bold text-center mb-8">JUROS COMPOSTOS</h1>
-                <div class="border-t border-gray-200 mt-10 mb-10"></div>
-                    <div class="space-y-2 mt-7">
-                        <label class="block font-medium">APORTE INICIAL</label>
-                        <div class="relative">
-                            <span class="absolute left-3 top-2">R$</span>
-                            <input type="number" v-model="aporteInicial" class="w-full p-2 pl-10 border rounded" step="0.01">
-                        </div>
+                <h1 class="text-2xl font-bold mb-6 text-center">Simulador de rentabilidade Poupança x Selic</h1>
+                
+                <div class="border-t border-gray-200 my-6"></div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Aporte inicial</label>
+                        <input type="number" v-model="initialAmount" class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500">
                     </div>
-                    <div class="space-y-2">
-                        <label class="block font-medium">APORTE MENSAL</label>
-                        <div class="relative">
-                            <span class="absolute left-3 top-2">R$</span>
-                            <input type="number" v-model="aporteMensal" class="w-full p-2 pl-10 border rounded" step="0.01">
-                        </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Aporte mensal</label>
+                        <input type="number" v-model="monthlyAmount" class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500">
                     </div>
-
-
-
-                    <div class="space-y-2">
-                        <label class="block font-medium">TAXA DE JUROS</label>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Período</label>
                         <div class="flex gap-4">
-                            <input type="number" v-model="taxaJuros" class="w-full p-2 border rounded" step="0.01">
-                            <select v-model="tipoTaxa" class="p-2 border rounded">
-                                <option value="mensal">MENSAL</option>
-                                <option value="anual">ANUAL</option>
+                            <input type="number" v-model="period" class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500">
+                            <select v-model="periodType" class="p-2 border rounded focus:ring-2 focus:ring-blue-500">
+                                <option value="months">Meses</option>
+                                <option value="years">Anos</option>
                             </select>
                         </div>
                     </div>
 
-                    <div class="space-y-2">
-                        <label class="block font-medium">PERÍODO</label>
-                        <div class="flex gap-4">
-                            <input type="number" v-model="periodo" class="w-full p-2 border rounded">
-                            <select v-model="tipoPeriodo" class="p-2 border rounded">
-                                <option value="meses">MESES</option>
-                                <option value="anos">ANOS</option>
-                            </select>
+                    <div>
+                        <div class="text-right mb-4">
+                            <div class="text-sm text-gray-600">
+                                <p>Poupança: 7,17% a.a</p>
+                                <p>Taxa Selic: 10,5% a.a</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 justify-end mb-8">
+                            <button @click="calculate" class="px-6 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition-colors">
+                                Calcular
+                            </button>
+                            <button @click="clear" class="px-6 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition-colors">
+                                Limpar
+                            </button>
                         </div>
                     </div>
-                <!-- Botões -->
-                <div class="mt-8 flex justify-center gap-4">
-                    <button @click="calcular" class="px-6 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition-colors">CALCULAR</button>
-                    <button @click="limpar" class="px-6 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition-colors">LIMPAR</button>
+                    
                 </div>
-        
-        
-                <!-- Resultados -->
-                <div v-if="mostrarResultados" class="mt-8 space-y-8">
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <div class="bg-white p-4 rounded shadow">
-                            <h3 class="font-medium mb-2">Valor total final</h3>
-                            <p class="text-xl">R$ {{ formatarMoeda(resultados.valorTotalFinal) }}</p>
-                        </div>
-                        <div class="bg-white p-4 rounded shadow">
-                            <h3 class="font-medium mb-2">Valor total investido</h3>
-                            <p class="text-xl">R$ {{ formatarMoeda(resultados.valorTotalInvestido) }}</p>
-                        </div>
-                        <div class="bg-white p-4 rounded shadow">
-                            <h3 class="font-medium mb-2">Total em juros</h3>
-                            <p class="text-xl">R$ {{ formatarMoeda(resultados.totalJuros) }}</p>
-                        </div>
+                </div>
+                
+                <div v-if="showResults && isValid" class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-5">
+                    <div class="border rounded p-4">
+                        <h3 class="font-medium mb-4">Total acumulado na Poupança</h3>
+                        <p class="text-xl font-bold">{{ formattedSavingsTotal }}</p>
+                        <p class="text-sm text-gray-600 mt-2">7,17% a.a</p>
                     </div>
-        
-                    <!-- Tabela de resultados -->
-                    <div class="bg-white rounded shadow overflow-x-auto">
-                        <table class="w-full">
-                            <thead>
-                                <tr class="bg-gray-50">
-                                    <th class="p-4 text-left">Mês</th>
-                                    <th class="p-4 text-left">Total Investido</th>
-                                    <th class="p-4 text-left">Total Juros</th>
-                                    <th class="p-4 text-left">Total Acumulado</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr v-for="(mes, index) in resultados.meses" :key="index" class="border-t">
-                                    <td class="p-4">{{ index + 1 }}</td>
-                                    <td class="p-4">R$ {{ formatarMoeda(mes.totalInvestido) }}</td>
-                                    <td class="p-4">R$ {{ formatarMoeda(mes.totalJuros) }}</td>
-                                    <td class="p-4">R$ {{ formatarMoeda(mes.totalAcumulado) }}</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    
+                    <div class="border rounded p-4">
+                        <h3 class="font-medium mb-4">Total acumulado na Selic</h3>
+                        <p class="text-xl font-bold">{{ formattedSelicTotal }}</p>
+                        <p class="text-sm text-gray-600 mt-2">10,5% a.a</p>
+                    </div>
+                    
+                    <div class="border rounded p-4">
+                        <h3 class="font-medium mb-4">Diferença de rentabilidade</h3>
+                        <p class="text-xl font-bold">{{ formattedDifference }}</p>
                     </div>
                 </div>
             </div>
         </div>
-        <script src="../js/juroscompostos.js"></script>
+        <script src="../js/conservador.js"></script>
     </main>
     <script src="../js/menu.js"></script>
 </body>

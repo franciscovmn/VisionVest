@@ -1,154 +1,64 @@
-// Função para esconder a div de resultados
-function esconde_div_resultador() {
-    const minhaDiv = document.getElementById('resultados');
-    minhaDiv.style.display = 'none';
-}
+const { createApp } = Vue
 
-// Esconder a div ao carregar a página
-document.addEventListener('DOMContentLoaded', () => {
-    esconde_div_resultador();
-});
-
-document.getElementById('calcular').addEventListener('click', function () {
-    const minhaDiv = document.getElementById('resultados');
-    minhaDiv.style.display = 'block'; // Mostra a div de resultados
-
-    const capital = parseFloat(document.getElementById('capital').value);
-    const aporte = parseFloat(document.getElementById('aporte').value);
-    const taxa = parseFloat(document.getElementById('taxa').value);
-    const tipoTaxa = document.getElementById('tipoTaxa').value;
-    const periodo = parseFloat(document.getElementById('periodo').value);
-    const tipoPeriodo = document.getElementById('tipoPeriodo').value;
-
-    let taxaMensal;
-    if (tipoTaxa === 'anual') {
-        taxaMensal = (taxa / 12) / 100;
-    } else {
-        taxaMensal = taxa / 100;
-    }
-
-    let totalMeses;
-    if (tipoPeriodo === 'anos') {
-        totalMeses = periodo * 12;
-    } else {
-        totalMeses = periodo;
-    }
-
-    let montanteAtual = capital;
-    let totalInvestido = capital;
-    let totalJurosAcumulados = 0;
-
-    const labels = [];
-    const dadosMontante = [];
-    const dadosInvestido = [];
-    const tabelaResultados = [];
-
-    for (let i = 1; i <= totalMeses; i++) {
-        const juros = montanteAtual * taxaMensal;
-        montanteAtual += juros + aporte;
-        totalInvestido += aporte;
-        totalJurosAcumulados = montanteAtual - totalInvestido;
-
-        labels.push(`Mês ${i}`);
-        dadosMontante.push(montanteAtual);
-        dadosInvestido.push(totalInvestido);
-
-        tabelaResultados.push({
-            mes: i,
-            juros: juros.toFixed(2),
-            totalInvestido: totalInvestido.toFixed(2),
-            totalJuros: totalJurosAcumulados.toFixed(2),
-            totalAcumulado: montanteAtual.toFixed(2),
-        });
-    }
-
-    // Exibir os resultados no resumo
-    document.getElementById('valorFinal').textContent = `R$ ${montanteAtual.toFixed(2)}`;
-    document.getElementById('valorInvestido').textContent = `R$ ${totalInvestido.toFixed(2)}`;
-    document.getElementById('totalJuros').textContent = `R$ ${totalJurosAcumulados.toFixed(2)}`;
-
-    // Atualizar gráfico
-    atualizarGrafico(labels, dadosMontante, dadosInvestido);
-
-    // Preencher tabela
-    preencherTabela(tabelaResultados);
-});
-
-document.getElementById('limpar').addEventListener('click', function () {
-    // Limpar os campos de entrada
-    document.getElementById('capital').value = '';
-    document.getElementById('aporte').value = '';
-    document.getElementById('taxa').value = '';
-    document.getElementById('tipoTaxa').selectedIndex = 0;
-    document.getElementById('periodo').value = '';
-    document.getElementById('tipoPeriodo').selectedIndex = 0;
-
-    // Limpar os valores exibidos
-    document.getElementById('valorFinal').textContent = '-';
-    document.getElementById('valorInvestido').textContent = '-';
-    document.getElementById('totalJuros').textContent = '-';
-    document.getElementById('tabelaBody').innerHTML = '';
-
-    // Destruir o gráfico se existir
-    if (grafico) grafico.destroy();
-
-    // Esconder a div de resultados
-    esconde_div_resultador();
-});
-
-// Função para criar o gráfico
-let grafico;
-function atualizarGrafico(labels, dadosMontante, dadosInvestido) {
-    const ctx = document.getElementById('graficoEvolucao').getContext('2d');
-    if (grafico) grafico.destroy();
-
-    grafico = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: labels,
-            datasets: [
-                {
-                    label: 'Total Acumulado',
-                    data: dadosMontante,
-                    borderColor: 'red',
-                    borderWidth: 2,
-                    fill: false,
-                },
-                {
-                    label: 'Total Investido',
-                    data: dadosInvestido,
-                    borderColor: 'black',
-                    borderWidth: 2,
-                    fill: false,
-                },
-            ],
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: { display: true },
+        createApp({
+            data() {
+                return {
+                    aporteInicial: 0,
+                    aporteMensal: 0,
+                    taxaJuros: 0,
+                    periodo: 0,
+                    tipoTaxa: 'mensal',
+                    tipoPeriodo: 'meses',
+                    mostrarResultados: false,
+                    resultados: {
+                        valorTotalFinal: 0,
+                        valorTotalInvestido: 0,
+                        totalJuros: 0,
+                        meses: []
+                    }
+                }
             },
-            scales: {
-                x: { title: { display: true, text: 'Mês' } },
-                y: { title: { display: true, text: 'Valor (R$)' } },
-            },
-        },
-    });
-}
+            methods: {
+                calcular() {
+                    if (!this.aporteInicial || !this.aporteMensal || !this.taxaJuros || !this.periodo) {
+                        return;
+                    }
 
-// Função para preencher a tabela
-function preencherTabela(resultados) {
-    const tabelaBody = document.getElementById('tabelaBody');
-    tabelaBody.innerHTML = '';
-    resultados.forEach(row => {
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-            <td>${row.mes}</td>
-            <td>R$ ${row.juros}</td>
-            <td>R$ ${row.totalInvestido}</td>
-            <td>R$ ${row.totalJuros}</td>
-            <td>R$ ${row.totalAcumulado}</td>
-        `;
-        tabelaBody.appendChild(tr);
-    });
-}
+                    const periodoEmMeses = this.tipoPeriodo === 'anos' ? this.periodo * 12 : this.periodo
+                    let totalAcumulado = this.aporteInicial
+                    let totalInvestido = this.aporteInicial
+                    this.resultados.meses = []
+
+                    const taxaMensal = this.tipoTaxa === 'anual' 
+                        ? (Math.pow(1 + this.taxaJuros/100, 1/12) - 1) * 100
+                        : this.taxaJuros
+
+                    for (let i = 0; i < periodoEmMeses; i++) {
+                        const jurosDoMes = totalAcumulado * (taxaMensal / 100)
+                        totalAcumulado += jurosDoMes + this.aporteMensal
+                        totalInvestido += this.aporteMensal
+
+                        this.resultados.meses.push({
+                            totalInvestido: totalInvestido,
+                            totalJuros: totalAcumulado - totalInvestido,
+                            totalAcumulado: totalAcumulado
+                        })
+                    }
+
+                    this.resultados.valorTotalFinal = totalAcumulado
+                    this.resultados.valorTotalInvestido = totalInvestido
+                    this.resultados.totalJuros = totalAcumulado - totalInvestido
+                    this.mostrarResultados = true
+                },
+                limpar() {
+                    this.aporteInicial = 0
+                    this.aporteMensal = 0
+                    this.taxaJuros = 0
+                    this.periodo = 0
+                    this.mostrarResultados = false
+                },
+                formatarMoeda(valor) {
+                    return valor.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')
+                }
+            }
+        }).mount('#app')
