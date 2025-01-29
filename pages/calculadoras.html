@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadoras e Simuladores Financeiros</title>
+    <meta name="description" content="Calculadoras financeiras para juros compostos, reserva de emergência, criptomoedas e comparação entre poupança e SELIC">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/vue@3.5.13/dist/vue.global.js"></script>
+    <link rel="icon" type="image/png" href="https://api.dicebear.com/7.x/icons/svg?seed=finance&backgroundColor=1e1e1e">
+</head>
+<body class="bg-gray-100">
+
+    <header class="bg-green-600 text-white h-[20vh] flex items-center">
+        <nav class="h-16 flex items-center justify-between bg-green-700 px-4 w-full">
+            <div class="h-full flex items-center">
+                <a href="../index.html">
+                    <img src="../img/1 vision txt.png" alt="Logo" class="h-30 w-auto object-contain">
+                </a>
+            </div>            
+            <!-- Botão do Menu para Mobile -->
+            <button id="menu-button" class="md:hidden text-white focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>
+                </svg>
+            </button>
+    
+            <!-- Menu Normal (Desktop) -->
+            <div class="hidden md:flex space-x-8">
+                <a href="sobre.html" class="hover:text-green-200">Quem somos nós?</a>
+                <a href="contato.html" class="hover:text-green-200">Fale conosco</a>
+                <a href="calculadoras.html" class="hover:text-green-200">Calculadoras</a>
+
+            </div>
+    
+        </nav>
+    
+        <!-- Menu Mobile -->
+        <div id="mobile-menu" class="hidden absolute top-20 left-0 w-full bg-green-700 md:hidden flex flex-col items-center space-y-7 py-7">
+            <a href="sobre.html" class="text-white hover:text-green-200">Quem somos nós?</a>
+            <a href="contato.html" class="text-white hover:text-green-200">Fale conosco</a>
+            <a href="calculadoras.html" class="text-white hover:text-green-200">Calculadoras</a>
+        </div>
+    </header>
+    
+    <div class="tradingview-widget-container h-[10vh] bg-white">
+        <div class="tradingview-widget-container__widget"></div>
+    </div>
+    <script src="js/tradingview-widget.js"></script>
+
+    <main class="h-[50vh]">
+        <div id="app" class="container mx-auto px-4 py-8">
+            <h1 class="text-3xl font-bold text-center mb-8">Calculadoras e Simuladores</h1>
+    
+            <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                <!-- Juros Compostos -->
+                <a href="/juros-compostos.html" class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow flex items-start gap-4">
+                    <svg class="w-8 h-8 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <h2 class="text-xl font-semibold mb-4">Juros Compostos</h2>
+                    <p class="text-gray-600">Calcule o efeito dos juros com o passar do tempo</p>
+                </a>
+    
+                <!-- Reserva de Emergência -->
+                <a href="/reserva-emergencia.html" class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow flex items-start gap-4">
+                    <svg class="w-8 h-8 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                    </svg>
+                    <h2 class="text-xl font-semibold mb-4">Reserva de Emergência</h2>
+                    <p class="text-gray-600">Descubra em quanto tempo você pode construir uma reserva segura</p>
+                </a>
+    
+                <!-- Conversor de Criptomoedas -->
+                <a href="/criptomoedas.html" class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow flex items-start gap-4">
+                    <svg class="w-8 h-8 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <h2 class="text-xl font-semibold mb-4">Conversor de Criptomoedas</h2>
+                    <p class="text-gray-600">Converta valores entre reais e criptomoedas</p>
+                </a>
+    
+                <!-- Poupança x Selic -->
+                <a href="/poupanca-selic.html" class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow flex items-start gap-4">
+                    <svg class="w-8 h-8 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                    </svg>
+                    <h2 class="text-xl font-semibold mb-4">Poupança x Selic</h2>
+                    <p class="text-gray-600">Compare o rendimento entre poupança e taxa Selic</p>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-green-600 text-white py-2 mt-auto ">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">A EMPRESA PARA INVESTIMENTOS</h3>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Paraíba</h4>
+                    <p>email@gmail.com</p>
+                    <p>+55 (83)99999-9999</p>
+                    <p>Endereço</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Rio de Janeiro</h4>
+                    <p>email@gmail.com</p>
+                    <p>+55 (21)99999-9999</p>
+                    <p>Endereço</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Newsletter</h4>
+                    <p class="mb-4">Quer garantir os melhores investimentos?</p>
+                    <form @submit.prevent="subscribeNewsletter" class="flex">
+                        <input type="email" v-model="email" placeholder="Seu e-mail" class="p-2 rounded-l text-gray-800 w-full">
+                        <button type="submit" class="bg-white text-green-600 px-4 py-2 rounded-r font-semibold hover:bg-green-100">
+                            Assinar
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="../js/menu.js"></script>
+
+</body>
+</html>

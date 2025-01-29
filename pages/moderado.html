@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investimentos - Seu Futuro Financeiro</title>
+    <meta name="description" content="Descubra as melhores opções de investimentos para investidores intermediários. Oferecemos consultoria especializada e soluções personalizadas.">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/vue@3.5.13/dist/vue.global.js"></script>
+    <link rel="icon" type="image/png" href="https://api.dicebear.com/7.x/shapes/svg?seed=investment" />
+    <script src="https://unpkg.com/vue@3.5.13/dist/vue.global.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@tailwindcss/typography/dist/typography.min.css" rel="stylesheet">
+</head>
+<body class="bg-white">
+
+        <!-- Header -->
+        <header class="bg-green-600 text-white h-[20vh] flex items-center">
+            <nav class="h-16 flex items-center justify-between bg-green-700 px-4 w-full">
+                <div class="h-full flex items-center">
+                    <a href="../index.html">
+                        <img src="../img/1 vision txt.png" alt="Logo" class="h-10 w-auto object-contain">
+                    </a>
+                </div>
+                
+                <!-- Botão do Menu para Mobile -->
+                <button id="menu-button" class="md:hidden text-white focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>
+                    </svg>
+                </button>
+        
+                <!-- Menu Normal (Desktop) -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="sobre.html" class="hover:text-green-200">Quem somos nós?</a>
+                    <a href="contato.html" class="hover:text-green-200">Fale conosco</a>
+                    <a href="../index.html" class="hover:text-green-200">Calculadoras</a>
+                </div>
+        
+            </nav>
+        
+            <!-- Menu Mobile -->
+            <div id="mobile-menu" class="hidden absolute top-20 left-0 w-full bg-green-700 md:hidden flex flex-col items-center space-y-7 py-7">
+                <a href="sobre.html" class="text-white hover:text-green-200">Quem somos nós?</a>
+                <a href="contato.html" class="text-white hover:text-green-200">Fale conosco</a>
+                <a href="../index.html" class="text-white hover:text-green-200">Calculadoras</a>
+            </div>
+        </header>
+        <div class="tradingview-widget-container h-[10vh] bg-white">
+            <div class="tradingview-widget-container__widget"></div>
+        </div>
+        <script src="../js/tradingview-widget.js"></script>
+        
+
+        <!-- Main Content -->
+        <main class="container mx-auto px-4 py-8 h-[90vh]">
+            <section id="investidor-intermediario" class="mb-12">
+                <h1 class="text-4xl font-bold mb-6">Quem é o Investidor Intermediário?</h1>
+                <p class="text-lg mb-8">O investidor intermediário é aquele que já possui alguma experiência no mercado financeiro e está disposto a assumir um pouco mais de risco em busca de melhores retornos. Ele busca equilibrar segurança e rentabilidade, diversificando sua carteira com ativos de renda fixa e variável. Este perfil de investidor está em constante aprendizado e busca entender melhor as oportunidades do mercado.</p>
+            </section>
+
+            <section id="opcoes-investimentos" class="mb-12">
+                <h2 class="text-3xl font-bold mb-6">Opções de Investimentos Intermediários</h2>
+                <p class="text-lg mb-8">Os investidores intermediários podem diversificar sua carteira com ativos de diferentes níveis de risco. Algumas opções incluem:</p>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="border p-6 rounded-lg">
+                        <h3 class="font-bold text-xl mb-4">Renda Fixa</h3>
+                        <p>Títulos com maior rentabilidade, como CDBs, LCIs/LCAs e debêntures incentivadas.</p>
+                    </div>
+                    <div class="border p-6 rounded-lg">
+                        <h3 class="font-bold text-xl mb-4">Fundos Multimercado</h3>
+                        <p>Oferecem uma mescla de renda fixa e variável, com potencial de bons retornos.</p>
+                    </div>
+                    <div class="border p-6 rounded-lg">
+                        <h3 class="font-bold text-xl mb-4">ETFs</h3>
+                        <p>São fundos negociados na bolsa que replicam índices, oferecendo exposição a ações com diversificação.</p>
+                    </div>
+                    <div class="border p-6 rounded-lg">
+                        <h3 class="font-bold text-xl mb-4">Ações de empresas sólidas</h3>
+                        <p>Blue chips ou empresas com histórico de estabilidade e bons resultados.</p>
+                    </div>
+                    <div class="border p-6 rounded-lg">
+                        <h3 class="font-bold text-xl mb-4">COEs</h3>
+                        <p>Combinação de renda fixa e variável, com possibilidade de proteger parte do capital.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="grafico investimentos" class="mb-12">
+                <!-- TradingView Widget BEGIN -->
+                <div class="tradingview-widget-container">
+                    <div class="tradingview-widget-container__widget"></div>
+                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js" async>
+                    {
+                    "width": "100%",
+                    "height": "500",
+                    "symbolsGroups": [
+                    {
+                        "name": "Indices",
+                        "originalName": "Indices",
+                        "symbols": [
+                        {
+                            "name": "FOREXCOM:SPXUSD",
+                            "displayName": "S&P 500 Index"
+                        },
+                        {
+                            "name": "FOREXCOM:NSXUSD",
+                            "displayName": "US 100 Cash CFD"
+                        },
+                        {
+                            "name": "FOREXCOM:DJI",
+                            "displayName": "Dow Jones Industrial Average Index"
+                        },
+                        {
+                            "name": "INDEX:NKY",
+                            "displayName": "Japan 225"
+                        },
+                        {
+                            "name": "INDEX:DEU40",
+                            "displayName": "DAX Index"
+                        },
+                        {
+                            "name": "FOREXCOM:UKXGBP",
+                            "displayName": "FTSE 100 Index"
+                        }
+                        ]
+                    },
+                    {
+                        "name": "Futures",
+                        "originalName": "Futures",
+                        "symbols": [
+                        {
+                            "name": "CME_MINI:ES1!",
+                            "displayName": "S&P 500"
+                        },
+                        {
+                            "name": "CME:6E1!",
+                            "displayName": "Euro"
+                        },
+                        {
+                            "name": "COMEX:GC1!",
+                            "displayName": "Gold"
+                        },
+                        {
+                            "name": "NYMEX:CL1!",
+                            "displayName": "WTI Crude Oil"
+                        },
+                        {
+                            "name": "NYMEX:NG1!",
+                            "displayName": "Gas"
+                        },
+                        {
+                            "name": "CBOT:ZC1!",
+                            "displayName": "Corn"
+                        }
+                        ]
+                    },
+                    {
+                        "name": "Bonds",
+                        "originalName": "Bonds",
+                        "symbols": [
+                        {
+                            "name": "CBOT:ZB1!",
+                            "displayName": "T-Bond"
+                        },
+                        {
+                            "name": "CBOT:UB1!",
+                            "displayName": "Ultra T-Bond"
+                        },
+                        {
+                            "name": "EUREX:FGBL1!",
+                            "displayName": "Euro Bund"
+                        },
+                        {
+                            "name": "EUREX:FBTP1!",
+                            "displayName": "Euro BTP"
+                        },
+                        {
+                            "name": "EUREX:FGBM1!",
+                            "displayName": "Euro BOBL"
+                        }
+                        ]
+                    },
+                    {
+                        "name": "Forex",
+                        "originalName": "Forex",
+                        "symbols": [
+                        {
+                            "name": "FX:EURUSD",
+                            "displayName": "EUR to USD"
+                        },
+                        {
+                            "name": "FX:GBPUSD",
+                            "displayName": "GBP to USD"
+                        },
+                        {
+                            "name": "FX:USDJPY",
+                            "displayName": "USD to JPY"
+                        },
+                        {
+                            "name": "FX:USDCHF",
+                            "displayName": "USD to CHF"
+                        },
+                        {
+                            "name": "FX:AUDUSD",
+                            "displayName": "AUD to USD"
+                        },
+                        {
+                            "name": "FX:USDCAD",
+                            "displayName": "USD to CAD"
+                        }
+                        ]
+                    }
+                    ],
+                    "showSymbolLogo": true,
+                    "isTransparent": false,
+                    "colorTheme": "light",
+                    "locale": "br",
+                    "backgroundColor": "#ffffff"
+                }
+                    </script>
+                </div>
+                <!-- TradingView Widget END -->
+            </section>
+        </main>
+
+
+
+        <footer class="bg-green-600 text-white py-2 mt-auto">
+            <div class="container mx-auto px-6">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    <div>
+                        <h3 class="text-xl font-bold mb-4">A EMPRESA PARA INVESTIMENTOS</h3>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-4">Paraíba</h4>
+                        <p>email@gmail.com</p>
+                        <p>+55 (83)99999-9999</p>
+                        <p>Endereço</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-4">Rio de Janeiro</h4>
+                        <p>email@gmail.com</p>
+                        <p>+55 (21)99999-9999</p>
+                        <p>Endereço</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-4">Newsletter</h4>
+                        <p class="mb-4">Quer garantir os melhores investimentos?</p>
+                        <form @submit.prevent="subscribeNewsletter" class="flex">
+                            <input type="email" v-model="email" placeholder="Seu e-mail" class="p-2 rounded-l text-gray-800 w-full">
+                            <button type="submit" class="bg-white text-green-600 px-4 py-2 rounded-r font-semibold hover:bg-green-100">
+                                Assinar
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+
+    <script>
+        const { createApp } = Vue
+        createApp({
+            data() {
+                return {
+                    loading: false
+                }
+            }
+        }).mount('#app')
+    </script>
+    <script src="../js/menu.js"></script> 
+</body>
+</html>

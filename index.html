@@ -14,7 +14,7 @@
     <header class="bg-green-600 text-white h-[20vh] flex items-center">
         <nav class="h-16 flex items-center justify-between bg-green-700 px-4 w-full">
             <div class="h-full flex items-center">
-                <a href="index1.html">
+                <a href="index.html">
                     <img src="img/1 vision txt.png" alt="Logo" class="h-30 w-auto object-contain">
                 </a>
             </div>            
@@ -29,7 +29,7 @@
             <div class="hidden md:flex space-x-8">
                 <a href="pages/sobre.html" class="hover:text-green-200">Quem somos nós?</a>
                 <a href="pages/contato.html" class="hover:text-green-200">Fale conosco</a>
-                <a href="pages/calculadora_inicial.html" class="hover:text-green-200">Calculadoras</a>
+                <a href="pages/calculadoras.html" class="hover:text-green-200">Calculadoras</a>
 
             </div>
     
@@ -39,44 +39,17 @@
         <div id="mobile-menu" class="hidden absolute top-20 left-0 w-full bg-green-700 md:hidden flex flex-col items-center space-y-7 py-7">
             <a href="pages/sobre.html" class="text-white hover:text-green-200">Quem somos nós?</a>
             <a href="pages/contato.html" class="text-white hover:text-green-200">Fale conosco</a>
-            <a href="pages/calculadora_inicial.html" class="text-white hover:text-green-200">Calculadoras</a>
+            <a href="pages/calculadoras.html" class="text-white hover:text-green-200">Calculadoras</a>
         </div>
     </header>
     
-    <div class="tradingview-widget-container h-[10vh] bg-white flex items-center justify-center">
+    <div class="tradingview-widget-container h-[10vh] bg-white">
         <div class="tradingview-widget-container__widget"></div>
-        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
-        {
-        "symbols": [
-        {
-            "proName": "FOREXCOM:SPXUSD",
-            "title": "S&P 500 Index"
-        },
-        {
-            "proName": "FOREXCOM:NSXUSD",
-            "title": "US 100 Cash CFD"
-        },
-        {
-            "proName": "FX_IDC:EURUSD",
-            "title": "EUR to USD"
-        },
-        {
-            "proName": "BITSTAMP:BTCUSD",
-            "title": "Bitcoin"
-        },
-        {
-            "proName": "BITSTAMP:ETHUSD",
-            "title": "Ethereum"
-        }
-        ],
-        "showSymbolLogo": true,
-        "isTransparent": false,
-        "displayMode": "adaptive",
-        "colorTheme": "light",
-        "locale": "en"
-    }
-        </script>
     </div>
+    <script src="js/tradingview-widget.js"></script>
+    
+    
+    
 
     <main class="flex-1 flex items-center justify-center bg-gray-100 h-[70vh]">
         <div id="app" class="container mx-auto px-5 py-8">

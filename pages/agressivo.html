@@ -9,42 +9,45 @@
     <script src="https://unpkg.com/vue@3.5.13/dist/vue.global.js"></script>
 </head>
 <body class="bg-white">
-    <div id="app">
         <!-- Header -->
-      <header class="bg-green-600 text-white h-[20vh] flex items-center">
-        <nav class="h-16 flex items-center justify-between bg-green-700 px-4 w-full">
-            <div class="h-full flex items-center">
-                <a href="index1.html">
-                    <img src="img/1 vision txt.png" alt="Logo" class="h-30 w-auto object-contain">
-                </a>
+        <header class="bg-green-600 text-white h-[20vh] flex items-center">
+            <nav class="h-16 flex items-center justify-between bg-green-700 px-4 w-full">
+                <div class="h-full flex items-center">
+                    <a href="../index.html">
+                        <img src="../img/1 vision txt.png" alt="Logo" class="h-10 w-auto object-contain">
+                    </a>
+                </div>            
+                <!-- Botão do Menu para Mobile -->
+                <button id="menu-button" class="md:hidden text-white focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>
+                    </svg>
+                </button>
+        
+                <!-- Menu Normal (Desktop) -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="sobre.html" class="hover:text-green-200">Quem somos nós?</a>
+                    <a href="contato.html" class="hover:text-green-200">Fale conosco</a>
+                    <a href="calculadoras.html" class="hover:text-green-200">Calculadoras</a>
+    
+                </div>
+        
+            </nav>
+        
+            <!-- Menu Mobile -->
+            <div id="mobile-menu" class="hidden absolute top-20 left-0 w-full bg-green-700 md:hidden flex flex-col items-center space-y-7 py-7">
+                <a href="sobre.html" class="text-white hover:text-green-200">Quem somos nós?</a>
+                <a href="contato.html" class="text-white hover:text-green-200">Fale conosco</a>
+                <a href="calculadoras.html" class="text-white hover:text-green-200">Calculadoras</a>
             </div>
-            
-            <!-- Botão do Menu para Mobile -->
-            <button id="menu-button" class="md:hidden text-white focus:outline-none">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>
-                </svg>
-            </button>
-    
-            <!-- Menu Normal (Desktop) -->
-            <div class="hidden md:flex space-x-8">
-                <a href="sobre.html" class="hover:text-green-200">Quem somos nós?</a>
-                <a href="contato.html" class="hover:text-green-200">Fale conosco</a>
-                <a href="../index.html" class="hover:text-green-200">Calculadoras</a>
-            </div>
-    
-        </nav>
-    
-        <!-- Menu Mobile -->
-        <div id="mobile-menu" class="hidden absolute top-20 left-0 w-full bg-green-700 md:hidden flex flex-col items-center space-y-7 py-7">
-            <a href="sobre.html" class="text-white hover:text-green-200">Quem somos nós?</a>
-            <a href="contato.html" class="text-white hover:text-green-200">Fale conosco</a>
-            <a href="../index.html" class="text-white hover:text-green-200">Calculadoras</a>
+        </header>
+        <div class="tradingview-widget-container h-[10vh] bg-white">
+            <div class="tradingview-widget-container__widget"></div>
         </div>
-    </header>
+        <script src="../js/tradingview-widget.js"></script>
 
         <!-- Main Content -->
-        <main class="container mx-auto px-4 py-8">
+        <main class="container mx-auto px-4 py-8 h-[70vh]">
             <h1 class="text-4xl font-bold mb-6">Quem é o Investidor Agressivo?</h1>
             
             <p class="text-lg mb-8">
@@ -76,46 +79,116 @@
                     <p>Estratégias avançadas que permitem alavancagem e proteção da carteira.</p>
                 </div>
             </div>
+            <section>
+                <div id="app" class="container mx-auto px-4 py-8 max-w-2xl">
+                    <h1 class="text-2xl font-bold text-center mb-8">CONVERSOR CRIPTOMOEDAS</h1>
+                    
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <!-- Currency Input -->
+                        <div class="mb-6">
+                            <div class="flex space-x-4">
+                                <div class="w-1/3">
+                                    <label class="block text-gray-700 mb-2">MOEDA</label>
+                                    <select v-model="selectedCurrency" @change="convert" class="w-full p-2 border rounded">
+                                        <option value="BRL">REAL (R$)</option>
+                                        <option value="USD">DÓLAR (US$)</option>
+                                    </select>
+                                </div>
+                                <div class="w-2/3">
+                                    <label class="block text-gray-700 mb-2">VALOR</label>
+                                    <input type="number" v-model="amount" @input="convert" class="w-full p-2 border rounded">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Converted Currency -->
+                        <div class="mb-6" v-if="selectedCurrency === 'BRL'">
+                            <label class="block text-gray-700 mb-2">DÓLAR (US$)</label>
+                            <div class="w-full p-2 border rounded bg-gray-50">{{ usdAmount }}</div>
+                        </div>
+                        <div class="mb-6" v-if="selectedCurrency === 'USD'">
+                            <label class="block text-gray-700 mb-2">REAL (R$)</label>
+                            <div class="w-full p-2 border rounded bg-gray-50">{{ brlAmount }}</div>
+                        </div>
+            
+                        <!-- Convert Button -->
+                        <button @click="convert" class="w-full bg-green-500 text-white py-2 rounded mb-6 hover:bg-green-600">
+                            CONVERTER
+                        </button>
+            
+                        <!-- Results -->
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between p-3 border rounded">
+                                <div class="flex items-center">
+                                    <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png" class="w-6 h-6 mr-2">
+                                    <span>BITCOIN (BTC)</span>
+                                </div>
+                                <span>{{ cryptoValues.btc }}</span>
+                            </div>
+            
+                            <div class="flex items-center justify-between p-3 border rounded">
+                                <div class="flex items-center">
+                                    <img src="https://cryptologos.cc/logos/ethereum-eth-logo.png" class="w-6 h-6 mr-2">
+                                    <span>ETHEREUM (ETH)</span>
+                                </div>
+                                <span>{{ cryptoValues.eth }}</span>
+                            </div>
+            
+                            <div class="flex items-center justify-between p-3 border rounded">
+                                <div class="flex items-center">
+                                    <img src="https://cryptologos.cc/logos/solana-sol-logo.png" class="w-6 h-6 mr-2">
+                                    <span>SOLANA (SOL)</span>
+                                </div>
+                                <span>{{ cryptoValues.sol }}</span>
+                            </div>
+            
+                            <div class="flex items-center justify-between p-3 border rounded">
+                                <div class="flex items-center">
+                                    <img src="https://cryptologos.cc/logos/xrp-xrp-logo.png" class="w-6 h-6 mr-2">
+                                    <span>XRP (XRP)</span>
+                                </div>
+                                <span>{{ cryptoValues.xrp }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+                <script src="../js/agressivo.js"></script>
+            </section>
         </main>
 
-        <!-- Footer -->
-        <footer class="bg-green-600 text-white py-12">
-            <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div>
-                    <h2 class="text-2xl font-bold mb-4">A EMPRESA PARA INVESTIMENTOS</h2>
-                </div>
-                
-                <div class="grid grid-cols-2 gap-8">
+        <footer class="bg-green-600 text-white py-2 mt-auto">
+            <div class="container mx-auto px-6">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                     <div>
-                        <h3 class="font-bold mb-2">Paraíba</h3>
+                        <h3 class="text-xl font-bold mb-4">A EMPRESA PARA INVESTIMENTOS</h3>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-4">Paraíba</h4>
                         <p>email@gmail.com</p>
                         <p>+55 (83)99999-9999</p>
                         <p>Endereço</p>
-                        <a href="#" class="border-b">Veja no mapa</a>
                     </div>
                     <div>
-                        <h3 class="font-bold mb-2">Rio de Janeiro</h3>
+                        <h4 class="font-semibold mb-4">Rio de Janeiro</h4>
                         <p>email@gmail.com</p>
                         <p>+55 (21)99999-9999</p>
                         <p>Endereço</p>
-                        <a href="#" class="border-b">Veja no mapa</a>
                     </div>
-                </div>
-
-                <div>
-                    <h3 class="text-xl mb-4">Quer garantir os melhores investimentos?</h3>
-                    <h4 class="font-bold mb-2">Newsletter</h4>
-                    <div class="mb-4">
-                        <input type="email" placeholder="Seu e-mail" class="w-full p-2 text-black rounded">
-                    </div>
-                    <h4 class="font-bold mb-2">Nos siga:</h4>
-                    <div class="flex space-x-4">
-                        <!-- Add social media icons here -->
+                    <div>
+                        <h4 class="font-semibold mb-4">Newsletter</h4>
+                        <p class="mb-4">Quer garantir os melhores investimentos?</p>
+                        <form @submit.prevent="subscribeNewsletter" class="flex">
+                            <input type="email" v-model="email" placeholder="Seu e-mail" class="p-2 rounded-l text-gray-800 w-full">
+                            <button type="submit" class="bg-white text-green-600 px-4 py-2 rounded-r font-semibold hover:bg-green-100">
+                                Assinar
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
         </footer>
-    </div>
+
 
     <script>
         const { createApp } = Vue
