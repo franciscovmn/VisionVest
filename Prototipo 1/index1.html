@@ -86,21 +86,21 @@
                 <div @click="selectProfile('conservador')" 
                     :class="['p-6 rounded-lg border-2 cursor-pointer transition-all duration-300 hover:shadow-lg', 
                             selectedProfile === 'conservador' ? 'border-green-500 bg-green-50' : 'border-gray-200 bg-white']">
-                    <h2 class="text-2xl font-semibold mb-4">Conservador</h2>
+                    <a href="conservador.html"><h2 class="text-2xl font-semibold mb-4">Conservador</h2></a>
                     <p class="text-gray-600">Prefere segurança e está disposto a aceitar retornos menores para evitar riscos.</p>
                 </div>
     
                 <div @click="selectProfile('intermediario')"
                     :class="['p-6 rounded-lg border-2 cursor-pointer transition-all duration-300 hover:shadow-lg',
                             selectedProfile === 'intermediario' ? 'border-blue-500 bg-blue-50' : 'border-gray-200 bg-white']">
-                    <h2 class="text-2xl font-semibold mb-4">Intermediário</h2>
+                    <a href="intermediario.html"><h2 class="text-2xl font-semibold mb-4">Intermediário</h2></a>
                     <p class="text-gray-600">Busca equilíbrio entre segurança e rentabilidade, aceitando riscos moderados.</p>
                 </div>
     
                 <div @click="selectProfile('agressivo')"
                     :class="['p-6 rounded-lg border-2 cursor-pointer transition-all duration-300 hover:shadow-lg',
                             selectedProfile === 'agressivo' ? 'border-red-500 bg-red-50' : 'border-gray-200 bg-white']">
-                    <h2 class="text-2xl font-semibold mb-4">Agressivo</h2>
+                    <a href="agressivo.html"><h2 class="text-2xl font-semibold mb-4">Agressivo</h2></a>
                     <p class="text-gray-600">Busca maiores retornos e está disposto a aceitar mais riscos e volatilidade.</p>
                 </div>
             </div>
