@@ -11,38 +11,64 @@
     <link href="https://fonts.cdnfonts.com/css/codec-cold" rel="stylesheet">
 </head>
 <body class="bg-white">
-    <header class="bg-green-600 text-white h-[20vh] flex items-center">
-        <nav class="h-16 flex items-center justify-between bg-green-700 px-4 w-full">
-            <div class="h-full flex items-center">
-                <a href="../index.html" class="flex items-center ">
-                    <img src="../img/1 vision.png" alt="Logo" class="h-20 w-auto object-contain">
-                    <h1 class="visionvest-title text-6xl lg:text-7xl mt-2">VISIONVEST</h1>
-                </a>
-            </div>
-            
-            <!-- Botão do Menu para Mobile -->
-            <button id="menu-button" class="md:hidden text-white focus:outline-none">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>
-                </svg>
-            </button>
+    <!-- Botão do Menu para Mobile -->
+    <button id="menu-button" class="md:hidden text-white focus:outline-none">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>
+        </svg>
+    </button>
+    <div id="app">
+        <header class="bg-green-600 text-white h-[20vh] flex items-center">
+            <nav class="h-16 flex items-center justify-between bg-green-700 px-4 w-full">
+                <div class="h-full flex items-center">
+                    <a href="../index.html" class="flex items-center">
+                        <img src="../img/1 vision.png" alt="Logo" class="h-20 w-auto object-contain">
+                        <h1 class="visionvest-title text-6xl lg:text-7xl mt-2">VISIONVEST</h1>
+                    </a>
+                </div>
+                
+                <!-- Barra de Pesquisa com Filtro -->
+                <div id="search-app" class="relative w-72">
+                    <input v-model="searchQuery" type="text" placeholder="🔍 Buscar..." 
+                        class="w-full p-3 pl-12 text-gray-800 bg-white border border-gray-300 rounded-full shadow-md focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent transition">
+                   
+                    <!-- Resultados do Filtro -->
+                    <div v-if="searchQuery && filteredItems.length" 
+                        class="absolute bg-white border border-gray-300 rounded-lg shadow-lg mt-2 w-full">
+                        <ul>
+                            <li v-for="item in filteredItems" :key="item.id" 
+                                @click="scrollToSection(item.id)"
+                                class="p-2 cursor-pointer hover:bg-green-100 text-gray-800"> <!-- Adicione text-gray-800 -->
+                                {{ item.label }}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
     
-            <!-- Menu Normal (Desktop) -->
-            <div class="hidden md:flex space-x-8">
-                <a href="sobre.html" class="hover:text-green-200">Quem somos nós?</a>
-                <a href="contato.html" class="hover:text-green-200">Fale conosco</a>
-                <a href="calculadoras.html" class="hover:text-green-200">Calculadoras</a>
-            </div>
-        </nav>
-    
-        <!-- Menu Mobile -->
-        <div id="mobile-menu" class="hidden absolute top-20 left-0 w-full bg-green-700 md:hidden flex flex-col items-center space-y-7 py-7">
-            <a href="sobre.html" class="text-white hover:text-green-200">Quem somos nós?</a>
-            <a href="contato.html" class="text-white hover:text-green-200">Fale conosco</a>
-            <a href="calculadoras.html" class="text-white hover:text-green-200">Calculadoras</a>
-        </div>
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="contato.html" class="text-white hover:text-green-200">Fale conosco</a>
+                    <a href="calculadoras.html" class="text-white hover:text-green-200">Calculadoras</a>
+                </div>
+            </nav>
+        </header>
+    </div>
+
+    <!-- Menu Normal (Desktop) -->
+    <div class="hidden md:flex items-center space-x-6">
+        <!-- Links do Menu -->
+        <a href="contato.html" class="text-white hover:text-green-200">Fale conosco</a>
+        <a href="calculadoras.html" class="text-white hover:text-green-200">Calculadoras</a>
+    </div>
+    </nav>
+
+    <!-- Menu Mobile -->
+    <div id="mobile-menu" class="hidden absolute top-20 left-0 w-full bg-green-700 md:hidden flex flex-col items-center space-y-7 py-7">
+        <a href="sobre.html" class="text-white hover:text-green-200">Quem somos nós?</a>
+        <a href="contato.html" class="text-white hover:text-green-200">Fale conosco</a>
+        <a href="calculadoras.html" class="text-white hover:text-green-200">Calculadoras</a>
+    </div>
     </header>
-    
+
     <main class="h-[70vh]">
         <section id="sobre" class="py-16">
             <div class="container mx-auto px-6">
@@ -103,7 +129,7 @@
                     </div>
                     <div class="text-center">
                         <div class="bg-green-600 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                            <img src="../img/stock-vector-check-mark-isolated-on-transparent-background-black-symbol-for-your-design-vector-illustration-654663922-removebg-preview.png" alt="Segurança" class="w-8 h-4     ">
+                            <img src="../img/stock-vector-check-mark-isolated-on-transparent-background-black-symbol-for-your-design-vector-illustration-654663922-removebg-preview.png" alt="Segurança" class="w-8 h-4">
                         </div>
                         <h3 class="font-semibold">Segurança</h3>
                     </div>
@@ -156,33 +182,44 @@
         </div>
     </footer>
 
-    <script type="module">
-        import { getSDK } from "https://webdraw.com/webdraw-sdk";
-        
-        const { createApp, ref, onMounted } = Vue;
-        
+    <script>
+        const { createApp, ref, computed } = Vue; // Acessa Vue globalmente
+    
         createApp({
             setup() {
-                const email = ref('');
+                const searchQuery = ref("");
+                const sections = ref([
+                    { id: "sobre", label: "Sobre nós" },
+                    { id: "missao", label: "Missão" },
+                    { id: "historia", label: "História" },
+                    { id: "valores", label: "Valores" },
+                ]);
                 
-                onMounted(async () => {
-                    const sdk = await getSDK();
+                const filteredItems = computed(() => {
+                    if (!searchQuery.value) return [];
+                    return sections.value.filter(section =>
+                        section.label.toLowerCase().includes(searchQuery.value.toLowerCase())
+                    );
                 });
-                
-                const subscribeNewsletter = async () => {
-                    if (!email.value) return;
-                    // Add newsletter subscription logic here
-                    email.value = '';
-                    alert('Obrigado por se inscrever!');
+    
+                const scrollToSection = (sectionId) => {
+                    console.log("Rolando para a seção:", sectionId); // Depuração
+                    const section = document.getElementById(sectionId);
+                    if (section) {
+                        section.scrollIntoView({ behavior: "smooth" });
+                        searchQuery.value = "";
+                    }
                 };
-                
+    
                 return {
-                    email,
-                    subscribeNewsletter
+                    searchQuery,
+                    filteredItems,
+                    scrollToSection,
                 };
             }
-        }).mount('#app');
+        }).mount("#search-app");
     </script>
+
     <script src="../js/menu.js"></script>
 </body>
 </html>
