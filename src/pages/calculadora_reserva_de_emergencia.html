@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadoras e Simuladores Financeiros</title>
+    <meta name="description" content="Calculadoras financeiras para juros compostos, reserva de emergência, criptomoedas e comparação entre poupança e SELIC">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/vue@3.5.13/dist/vue.global.js"></script>
+    <link rel="icon" type="image/png" href="https://api.dicebear.com/7.x/icons/svg?seed=finance&backgroundColor=1e1e1e">
+    <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAABKBJREFUWEe9l1tsVFUUhr+1z5lOO9NOO1CgUEqBtkBbLgUUjRcUFDWKGhM1GhONJhpjTHzwyQQTEx98MB7jLRoTYzQmxkQfNPGGGhWNGC/FC1LkWqFcCqXQTjsznXPOXmafmemUdoZeIHE/Tc7Za6/1n7X+vfY+R3CZ17bdjRWOMrdQKIQ8z0PXdRRFQRQK6EKgqyqKohR/K4qCaZrEYjEMwyh+zufzZDIZcrlc8Xkul8NxHGzbxrZtXNfFdV0URUHTNKLRKMFgkEgkQiAQQNd1hBDlsBQhxKRnE4qwbVejKPwD3AFUAyFAAH8Bu4CPge+AXClQIBCgqqoKXdfRNA1VVYu5XNclm83iOA627WDbNo7j4HkexZwulXQ6TSqVwnXdYjVVVSUYDBIMBtF1Hc/zcF0XwzBIJpPYtv1/AKuAV4D5gHbRAjwgDxwG3gTeB7IXv1dVlXA4TCgUIhAIIKVECFGshBCiGNjzPKSUeJ5XrEw2myWVSpHP54sBNU0jHA4Tj8eJRCKEQiFisRiGYaDrOrquY5omqVSKTCYzFmA28DYwH1Au8bF54CDwMvDT2PeqqhKLxQiHw0QiEWKxGMFgsChd13VM0ywKTtM0hBDFauTzeXK5HJlMhnQ6TSaTIZvNks/nMQyDeDxOPB4nGo0SiUSKVbQsa0wFfMAHwEMX5XaAw8A+4DiwGLgWmDVu/jDwLLB17ENd14nH48RiMSKRCMFgEMMwiEajRCIRTNNE0zSklEgpi9WwLAvLsrBtm3w+TzabxbIs0uk0hmEQCoWKAH6VwuEwpmkSDAaLcicA7AGeH5fbAX4E3gO+BU6Nm78aWA/cC1T4H/kS+QCGYRQl+yXVNK1YYl3XMU2zOPzKCCGQUhYrZNt2UapfHV++YRjFsaZpxGIxwuEwmqYhhCgC7AXWjQPYD7wGfA1kL9EyXwEPALcBzwFLgQV+6X0A/yP9ajiOU5x+UBxCiGJ5/WB+6/xq+PP9UeAHPTk+wEngKWDHJQBKZ1YAm4A1wJVF6eOlj6+E/9EPWFIBKSW2bRcr4LenL90fQojiKPEB/Gp9B9wPHCsD4LdnI/AkcMPkAaZTASmllFJeGEJ+4Ewmg2VZWJaF4zhIKS9UQAjxJ/A48MUUADYDjwJXTa0Fpda4rotlWViWhW3bF1rgd8J/6Vf0AvApsGcSALcCLwE3AaGpA0y1AuOl+2P4AvAJ8P0EAIuAF4G7gfDUAaYrXUpZlD6mBb8BW4BPgYPArcDzwB1A5NIAqqoQDOhEwwaGrqEIgeu6ZPMOadMml3dw3IkXXCklOcdFVRU0VUFVBK7nYTsuOcfFuWiRkyNXrVRURVCh64QMDUNTcVwP03bI5B0yuRxZ28X1vDFr0Z+jbFdKiaoIKg0NQ1NxXBfTcTBtB8txcNzJLYKKIgjqKrqmomsqnudh2i6m7WA7Lq43KYDi6UhVBLqqYGgahqahqQqO65LJO5i2g+1ObC0XQlDoqoKmKhiahqYouJ5HznHJOS6O6+J6HtJ/OWo+KYBKQyMe0qkwNKSEmCKQnofpengiQEBV0VQF6XlIKZFCoCoCTVGQUuJJiSclnvQQQFAVqKpAVQSe9JCeh/Q8XCmRnofrebiehyc9XCmRnsTzJFJ6uFLiSIkrJY7r4UiJ63m40sOVHv8B1ZCm/YqKcx4AAAAASUVORK5CYII=">
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.cdnfonts.com/css/codec-cold" rel="stylesheet">
+    <style>
+        [v-cloak] { display: none; }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: #2f9e44;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col">
+    
+<<<<<<< Updated upstream:pages/calculadora_reserva_de_emergencia.html
+            <!-- Menu Normal (Desktop) -->
+            <div class="hidden md:flex space-x-8">
+                <a href="sobre.html" class="hover:text-green-200">Nós conheça</a>
+                <a href="contato.html" class="hover:text-green-200">Fale conosco</a>
+                <a href="calculadoras.html" class="hover:text-green-200">Calculadoras</a>
+
+            </div>
+    
+        </nav>
+    
+        <!-- Menu Mobile -->
+        <div id="mobile-menu" class="hidden absolute top-20 left-0 w-full bg-green-700 md:hidden flex flex-col items-center space-y-7 py-7">
+            <a href="sobre.html" class="text-white hover:text-green-200">Nós conheça</a>
+            <a href="contato.html" class="text-white hover:text-green-200">Fale conosco</a>
+            <a href="calculadoras.html" class="text-white hover:text-green-200">Calculadoras</a>
+        </div>
+    </header>
+
+=======
+>>>>>>> Stashed changes:src/pages/calculadora_reserva_de_emergencia.html
+    <main>
+        <div id="app" v-cloak class="container mx-auto px-4 py-8 max-w-4xl">
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h1 class="text-2xl font-bold text-center mb-8">RESERVA DE EMERGÊNCIA</h1>
+                
+                <div class="space-y-6">
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Tipo de Emprego</label>
+                        <select v-model="employmentType" class="w-full p-2 border rounded">
+                            <option value="public">Funcionário Público</option>
+                            <option value="clt">CLT</option>
+                            <option value="autonomous">MEI/Autônomo/Empreendedor</option>
+                        </select>
+                    </div>
+    
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Salário</label>
+                        <div class="relative">
+                            <span class="absolute left-3 top-2">R$</span>
+                            <input type="number" v-model="salary" class="w-full p-2 pl-10 border rounded">
+                        </div>
+                    </div>
+    
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Custo Fixo</label>
+                        <div class="relative">
+                            <span class="absolute left-3 top-2">R$</span>
+                            <input type="number" v-model="fixedCost" class="w-full p-2 pl-10 border rounded">
+                        </div>
+                    </div>
+    
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Quanto % do salário você guarda por mês?</label>
+                        <div class="relative pt-4">
+                            <input type="range" v-model="savingsPercentage" min="0" max="100" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
+                            <div class="flex justify-between mt-2">
+                                <span>0%</span>
+                                <span>{{ savingsPercentage }}%</span>
+                                <span>100%</span>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="flex gap-4">
+                        <button @click="calculate" :disabled="!isFormValid" class="w-full bg-green-500 text-white py-4 rounded-lg font-bold hover:bg-green-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+                        CALCULAR
+                        </button>
+                        <button @click="clearForm" class="w-full bg-red-500 text-white py-4 rounded-lg font-bold hover:bg-red-600 transition-colors">
+                            LIMPAR
+                        </button>
+                    </div>
+                </div>
+    
+                <div v-if="showResults" class="mt-8 space-y-6">
+                    <div class="bg-gray-100 p-6 rounded-lg">
+                        <p class="text-center mb-4">SUA RESERVA DE EMERGÊNCIA DEVE SER DE</p>
+                        <p class="text-2xl font-bold text-center">R$ {{ emergencyFund.toFixed(2) }}</p>
+                        <p class="text-center mt-4 text-sm text-gray-600">Você precisa guardar {{ multipliers[employmentType] }} meses do seu custo fixo</p>
+                    </div>
+    
+                    <div class="bg-gray-100 p-6 rounded-lg">
+                        <p class="text-center mb-4">GUARDANDO {{ savingsPercentage }}% DO SEU SALÁRIO, FALTAM</p>
+                        <p class="text-2xl font-bold text-center">{{ monthsToComplete }} MESES PARA COMPLETAR A SUA RESERVA</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="module" src="../js/calculadoras/reserva_emergencia.js"></script>
+    </main>
+    <script type="module" src="../js/main.js"></script>
+</body>
+</html>

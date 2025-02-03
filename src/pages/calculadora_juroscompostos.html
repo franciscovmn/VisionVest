@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadoras e Simuladores Financeiros</title>
+    <meta name="description" content="Calculadoras financeiras para juros compostos, reserva de emergência, criptomoedas e comparação entre poupança e SELIC">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/vue@3.5.13/dist/vue.global.js"></script>
+    <link rel="icon" type="image/png" href="https://api.dicebear.com/7.x/icons/svg?seed=finance&backgroundColor=1e1e1e">
+    <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAABKBJREFUWEe9l1tsVFUUhr+1z5lOO9NOO1CgUEqBtkBbLgUUjRcUFDWKGhM1GhONJhpjTHzwyQQTEx98MB7jLRoTYzQmxkQfNPGGGhWNGC/FC1LkWqFcCqXQTjsznXPOXmafmemUdoZeIHE/Tc7Za6/1n7X+vfY+R3CZ17bdjRWOMrdQKIQ8z0PXdRRFQRQK6EKgqyqKohR/K4qCaZrEYjEMwyh+zufzZDIZcrlc8Xkul8NxHGzbxrZtXNfFdV0URUHTNKLRKMFgkEgkQiAQQNd1hBDlsBQhxKRnE4qwbVejKPwD3AFUAyFAAH8Bu4CPge+AXClQIBCgqqoKXdfRNA1VVYu5XNclm83iOA627WDbNo7j4HkexZwulXQ6TSqVwnXdYjVVVSUYDBIMBtF1Hc/zcF0XwzBIJpPYtv1/AKuAV4D5gHbRAjwgDxwG3gTeB7IXv1dVlXA4TCgUIhAIIKVECFGshBCiGNjzPKSUeJ5XrEw2myWVSpHP54sBNU0jHA4Tj8eJRCKEQiFisRiGYaDrOrquY5omqVSKTCYzFmA28DYwH1Au8bF54CDwMvDT2PeqqhKLxQiHw0QiEWKxGMFgsChd13VM0ywKTtM0hBDFauTzeXK5HJlMhnQ6TSaTIZvNks/nMQyDeDxOPB4nGo0SiUSKVbQsa0wFfMAHwEMX5XaAw8A+4DiwGLgWmDVu/jDwLLB17ENd14nH48RiMSKRCMFgEMMwiEajRCIRTNNE0zSklEgpi9WwLAvLsrBtm3w+TzabxbIs0uk0hmEQCoWKAH6VwuEwpmkSDAaLcicA7AGeH5fbAX4E3gO+BU6Nm78aWA/cC1T4H/kS+QCGYRQl+yXVNK1YYl3XMU2zOPzKCCGQUhYrZNt2UapfHV++YRjFsaZpxGIxwuEwmqYhhCgC7AXWjQPYD7wGfA1kL9EyXwEPALcBzwFLgQV+6X0A/yP9ajiOU5x+UBxCiGJ5/WB+6/xq+PP9UeAHPTk+wEngKWDHJQBKZ1YAm4A1wJVF6eOlj6+E/9EPWFIBKSW2bRcr4LenL90fQojiKPEB/Gp9B9wPHCsD4LdnI/AkcMPkAaZTASmllFJeGEJ+4Ewmg2VZWJaF4zhIKS9UQAjxJ/A48MUUADYDjwJXTa0Fpda4rotlWViWhW3bF1rgd8J/6Vf0AvApsGcSALcCLwE3AaGpA0y1AuOl+2P4AvAJ8P0EAIuAF4G7gfDUAaYrXUpZlD6mBb8BW4BPgYPArcDzwB1A5NIAqqoQDOhEwwaGrqEIgeu6ZPMOadMml3dw3IkXXCklOcdFVRU0VUFVBK7nYTsuOcfFuWiRkyNXrVRURVCh64QMDUNTcVwP03bI5B0yuRxZ28X1vDFr0Z+jbFdKiaoIKg0NQ1NxXBfTcTBtB8txcNzJLYKKIgjqKrqmomsqnudh2i6m7WA7Lq43KYDi6UhVBLqqYGgahqahqQqO65LJO5i2g+1ObC0XQlDoqoKmKhiahqYouJ5HznHJOS6O6+J6HtJ/OWo+KYBKQyMe0qkwNKSEmCKQnofpengiQEBV0VQF6XlIKZFCoCoCTVGQUuJJiSclnvQQQFAVqKpAVQSe9JCeh/Q8XCmRnofrebiehyc9XCmRnsTzJFJ6uFLiSIkrJY7r4UiJ63m40sOVHv8B1ZCm/YqKcx4AAAAASUVORK5CYII=">
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.cdnfonts.com/css/codec-cold" rel="stylesheet">
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col">
+    <main>
+        <div id="app" class="container mx-auto px-4 py-8">
+            <h1 class="text-2xl font-bold text-center mb-8">Calculadora de Juros Compostos</h1>
+            
+            <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block mb-2">Aporte Inicial</label>
+                        <div class="relative">
+                            <span class="absolute left-3 top-2">R$</span>
+                            <input type="number" v-model="initialAmount" class="w-full pl-10 pr-4 py-2 border rounded">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block mb-2">Aporte Mensal</label>
+                        <div class="relative">
+                            <span class="absolute left-3 top-2">R$</span>
+                            <input type="number" v-model="monthlyAmount" class="w-full pl-10 pr-4 py-2 border rounded">
+                        </div>
+                    </div>
+    
+                    <div>
+                        <label class="block mb-2">Taxa de Juros</label>
+                        <div class="flex gap-2">
+                            <div class="relative flex-1">
+                                <input type="number" v-model="interestRate" class="w-full pl-4 pr-8 py-2 border rounded"><span class="absolute right-3 top-2">%</span></div>
+                            <select v-model="interestPeriod" class="border rounded px-3">
+                                <option value="monthly">Mensal</option>
+                                <option value="yearly">Anual</option>
+                            </select>
+                        </div>
+                    </div>
+    
+                    <div>
+                        <label class="block mb-2">Período</label>
+                        <div class="flex gap-2">
+                            <input type="number" v-model="period" class="w-full px-4 py-2 border rounded">
+                            <select v-model="periodType" class="border rounded px-3">
+                                <option value="months">Meses</option>
+                                <option value="years">Anos</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="flex gap-4 mt-6">
+                    <button @click="calculate" class="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700">
+                        Calcular
+                    </button>
+                    <button @click="reset" class="bg-red-600 text-white px-6 py-2 rounded hover:bg-red-700">
+                        Limpar
+                    </button>
+                </div>
+            </div>
+    
+            <div v-if="showResults" class="grid md:grid-cols-3 gap-6 mb-8">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="font-semibold mb-4">Montante Investido</h3>
+                    <p class="text-xl">R$ {{ formatCurrency(totalInvested) }}</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="font-semibold mb-4">Montante Total</h3>
+                    <p class="text-xl">R$ {{ formatCurrency(totalAmount) }}</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="font-semibold mb-4">Juros</h3>
+                    <p class="text-xl">R$ {{ formatCurrency(totalInterest) }}</p>
+                </div>
+            </div>
+    
+            <div v-if="showResults" class="bg-white rounded-lg shadow-md overflow-x-auto">
+                <table class="w-full">
+                    <thead>
+                        <tr class="bg-gray-50">
+                            <th class="px-6 py-3 text-left">Mês</th>
+                            <th class="px-6 py-3 text-left">Montante Investido</th>
+                            <th class="px-6 py-3 text-left">Montante Total</th>
+                            <th class="px-6 py-3 text-left">Juros</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="(month, index) in monthlyResults" :key="index" class="border-t">
+                            <td class="px-6 py-4">{{ index + 1 }}</td>
+                            <td class="px-6 py-4">R$ {{ formatCurrency(month.invested) }}</td>
+                            <td class="px-6 py-4">R$ {{ formatCurrency(month.total) }}</td>
+                            <td class="px-6 py-4">R$ {{ formatCurrency(month.interest) }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    
+        <script type="module" src="../js/calculadoras/juroscompostos.js"></script>
+    </main>
+    <script type="module" src="../js/main.js"></script>
+</body>
+</html>
