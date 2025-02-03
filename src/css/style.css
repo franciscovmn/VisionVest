@@ -10,6 +10,11 @@
     align-items: center;
 }
 
+.text-navbar{
+    font-family: 'Codec Cold Trial', sans-serif;
+
+}
+
 
 @media (max-width: 1024px) {
     .visionvest-title {

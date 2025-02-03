@@ -1,6 +1,4 @@
-import { SDK } from "https://webdraw.com/webdraw-sdk@v1";
-
-        const { createApp } = Vue;
+const { createApp } = Vue;
 
         createApp({
             data() {
@@ -51,20 +49,6 @@ import { SDK } from "https://webdraw.com/webdraw-sdk@v1";
                     const profile = Object.entries(counts).sort((a, b) => b[1] - a[1])[0][0];
                     this.profile = profile.charAt(0).toUpperCase() + profile.slice(1);
 
-                    const sdk = SDK;
-                    const response = await sdk.fetch("https://webdraw.com/api/generate?task=text", {
-                        method: "POST",
-                        body: JSON.stringify({
-                            model: "anthropic:claude-3-5-haiku-20241022",
-                            messages: [{
-                                role: "user",
-                                content: `Gere uma descrição concisa (máximo 2 frases) para um perfil de investidor ${profile}.`
-                            }]
-                        })
-                    });
-
-                    const data = JSON.parse(response.body);
-                    this.profileDescription = data.text;
                 }
             }
         }).mount('#app')
