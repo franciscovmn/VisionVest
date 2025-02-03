@@ -11,13 +11,13 @@ export function carregarFooter() {
                     <h4 class="font-semibold mb-4">Paraíba</h4>
                     <p>email@gmail.com</p>
                     <p>+55 (83)99999-9999</p>
-                    <p>Endereço</p>
+                    <p>cep: 58015-020</p>
                 </div>
                 <div>
                     <h4 class="font-semibold mb-4">Rio de Janeiro</h4>
                     <p>email@gmail.com</p>
                     <p>+55 (21)99999-9999</p>
-                    <p>Endereço</p>
+                    <p>cep: 22451-267</p>
                 </div>
                 <div>
                     <h4 class="font-semibold mb-4">Newsletter</h4>
