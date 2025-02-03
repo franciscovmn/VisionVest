@@ -4,12 +4,12 @@ import { perfilCards } from './cards-perfil/perfilCards.js';
 import { perfis } from './cards-perfil/dataPerfis.js';
 import { carregarFooter } from "./footer.js";
 import { carregarHeader } from "./header.js";
-import { inserirWidgetTradingView } from './tradingview/tradingview-widget.js';  // Importando o widget
+import { inserirWidgetTradingView } from './tradingview/tradingview-widget.js'; 
 
 document.addEventListener("DOMContentLoaded", () => {
     carregarHeader();
     carregarFooter();
-    inserirWidgetTradingView();  // Inserindo o widget ao carregar a página
+    inserirWidgetTradingView();  
 
     const calculadora = document.querySelector('.calculadoras');
     const perfisinvestimento = document.querySelector('.perfis');
