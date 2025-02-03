@@ -12,7 +12,7 @@ export function carregarHeader() {
 
             <div class="hidden md:flex space-x-8">
                 <a href="/#calculadoras" class="hover:text-green-200">Calculadoras</a>
-                <a href="/#calculadoras" class="hover:text-green-200">Perfis de Investimento</a>
+                <a href="src/pages/qualseuperfil.html" class="hover:text-green-200">Descubra o seu perfil de Investimento</a>
             </div>
         </nav>
     `;
