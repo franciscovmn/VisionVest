@@ -7,8 +7,8 @@ export function carregarHeader() {
             <div class="h-full flex items-center">
                 <a href="/visionvest/index.html" class="flex items-center">
                     <img src="/visionvest/public/logo.svg" alt="Logo" class="h-20 w-auto object-contain">
+                    <h1 class="visionvest-title text-6xl lg:text-7xl mt-2">VISIONVEST</h1>
                 </a>
-                <h1 class="visionvest-title text-6xl lg:text-7xl mt-2">VISIONVEST</h1>
             </div>
 
             <div class="hidden md:flex space-x-8 relative">
