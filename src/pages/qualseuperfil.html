@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>visionvest</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="/visionvest/favicon-16x16.png">
+    <script src="https://unpkg.com/vue@3.5.13/dist/vue.global.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@tailwindcss/typography/dist/typography.min.css" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/codec-cold" rel="stylesheet">
+  <script type="module" crossorigin src="/visionvest/assets/qualseuperfil-CZ7y3DG_.js"></script>
+  <link rel="modulepreload" crossorigin href="/visionvest/assets/main-DOJO5Kqm.js">
+  <link rel="stylesheet" crossorigin href="/visionvest/assets/main-CEbEv4QQ.css">
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col">
+    <div id="app">
+        <main class="container mx-auto px-4 py-8">
+            <div class="max-w-2xl mx-auto">
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h2 class="text-2xl font-bold mb-6">Perfil de Investimento</h2>
+                    
+                    <div class="space-y-6">
+                        <div v-for="(question, index) in questions" :key="index" class="mb-4">
+                            <p class="font-medium mb-2">{{ question.text }}</p>
+                            <div class="space-y-2">
+                                <label v-for="option in question.options" :key="option.value" class="block">
+                                    <input type="radio" 
+                                           :name="'question'+index" 
+                                           :value="option.value"
+                                           v-model="answers[index]"
+                                           class="mr-2">
+                                    {{ option.text }}
+                                </label>
+                            </div>
+                        </div>
+
+                        <button @click="calculateProfile" 
+                                class="w-full bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700 transition-colors">
+                            Calcular Perfil
+                        </button>
+
+                        <div v-if="profile" class="mt-6 p-4 border rounded-lg">
+                            <h3 class="text-xl font-bold mb-2">Seu perfil é: {{ profile }}</h3>
+                            <p>{{ profileDescription }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body> 
+</html>
