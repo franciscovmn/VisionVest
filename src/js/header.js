@@ -5,7 +5,7 @@ export function carregarHeader() {
     header.innerHTML = `
         <nav class="h-16 flex items-center justify-between bg-green-700 px-4 w-full">
             <div class="h-full flex items-center">
-                <a href="/visionvest/index.html" class="flex items-center">
+                <a href="../../index.html" class="flex items-center">
                     <img src="/logo.svg" alt="Logo" class="h-20 w-auto object-contain">
                     <h1 class="visionvest-title text-6xl lg:text-7xl mt-2">VISIONVEST</h1>
                 </a>
