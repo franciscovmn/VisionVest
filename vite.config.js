@@ -5,7 +5,7 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        main: '../../index.html',
+        main: '/visionvest/index.html',
         agressivo: './src/pages/agressivo.html',
         conservador: './src/pages/conservador.html',
         moderado: './src/pages/moderado.html',
