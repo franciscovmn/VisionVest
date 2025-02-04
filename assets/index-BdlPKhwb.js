@@ -49,7 +49,7 @@
         <nav class="h-16 flex items-center justify-between bg-green-700 px-4 w-full">
             <div class="h-full flex items-center">
                 <a href="../../index.html" class="flex items-center">
-                    <img src="/logo.svg" alt="Logo" class="h-20 w-auto object-contain">
+                    <img src="public/logo.svg" alt="Logo" class="h-20 w-auto object-contain">
                     <h1 class="visionvest-title text-6xl lg:text-7xl mt-2">VISIONVEST</h1>
                 </a>
             </div>
@@ -76,7 +76,7 @@
             </div>
         </nav>
         
-    `,document.body.prepend(e),L()}function L(){const e=document.getElementById("userButton"),n=document.getElementById("userCard"),a=document.getElementById("userName"),l=document.getElementById("userEmail"),t=document.getElementById("userPhone"),r=document.getElementById("logoutButton"),o=localStorage.getItem("loggedInUser");if(o){const s=JSON.parse(localStorage.getItem(o));s&&(e.textContent=s.name,a.textContent=s.name,l.textContent=s.email,t.textContent=s.phone,e.addEventListener("click",()=>{n.classList.toggle("hidden")}),r.addEventListener("click",()=>{localStorage.removeItem("loggedInUser"),window.location.reload()}),document.addEventListener("click",i=>{!e.contains(i.target)&&!n.contains(i.target)&&n.classList.add("hidden")}))}else e.addEventListener("click",I)}function I(){E(()=>import("./login-Bs_qykcR.js"),[]).then(e=>{e.exibirTelaLogin()})}function P(){document.addEventListener("DOMContentLoaded",function(){const e=document.getElementById("tradingview-widget");if(e){const n=`
+    `,document.body.prepend(e),L()}function L(){const e=document.getElementById("userButton"),n=document.getElementById("userCard"),a=document.getElementById("userName"),l=document.getElementById("userEmail"),t=document.getElementById("userPhone"),r=document.getElementById("logoutButton"),o=localStorage.getItem("loggedInUser");if(o){const s=JSON.parse(localStorage.getItem(o));s&&(e.textContent=s.name,a.textContent=s.name,l.textContent=s.email,t.textContent=s.phone,e.addEventListener("click",()=>{n.classList.toggle("hidden")}),r.addEventListener("click",()=>{localStorage.removeItem("loggedInUser"),window.location.reload()}),document.addEventListener("click",i=>{!e.contains(i.target)&&!n.contains(i.target)&&n.classList.add("hidden")}))}else e.addEventListener("click",I)}function I(){E(()=>import("./login-BGFLMTvZ.js"),[]).then(e=>{e.exibirTelaLogin()})}function P(){document.addEventListener("DOMContentLoaded",function(){const e=document.getElementById("tradingview-widget");if(e){const n=`
                 <div class="tradingview-widget-container">
                     <div class="tradingview-widget-container__widget"></div>
                     <div class="tradingview-widget-copyright">
