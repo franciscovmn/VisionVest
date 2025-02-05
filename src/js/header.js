@@ -13,7 +13,7 @@ export function carregarHeader() {
 
             <div class="hidden md:flex space-x-8 relative">
                 <div class="hidden md:flex space-x-8 items-center relative">
-                    <a href="/visionvest/index.html/.calculadoras" class="text-navbar hover:text-green-200">Calculadoras</a>
+                    <a href="/visionvest/index.html/#calculadoras" class="text-navbar hover:text-green-200">Calculadoras</a>
                     <a href="./src/pages/qualseuperfil.html" class="text-navbar hover:text-green-200">Perfis de Investimento</a>
                     <button id="userButton" class="text-navbar bg-white text-green-600 px-4 py-2 rounded font-semibold hover:bg-green-100">
                         Login
