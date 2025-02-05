@@ -2,6 +2,13 @@ export function carregarHeader() {
     const header = document.createElement("header");
     header.className = "bg-green-600 text-white h-[20vh] flex items-center relative";
 
+    const paginaAtual = window.location.pathname.split("/").pop(); 
+
+    const links = [
+        { nome: "Calculadoras", href: "/visionvest/index.html/#calculadoras", id: "calculadorasLink" },
+        { nome: "Perfis de Investimento", href: "/visionvest/src/pages/qualseuperfil.html", id: "perfisLink" }
+    ];
+
     header.innerHTML = `
         <nav class="h-16 flex items-center justify-between bg-green-700 px-4 w-full">
             <div class="h-full flex items-center">
@@ -13,8 +20,9 @@ export function carregarHeader() {
 
             <div class="hidden md:flex space-x-8 relative">
                 <div class="hidden md:flex space-x-8 items-center relative">
-                    <a href="/visionvest/index.html/#calculadoras" class="text-navbar hover:text-green-200">Calculadoras</a>
-                    <a href="./src/pages/qualseuperfil.html" class="text-navbar hover:text-green-200">Perfis de Investimento</a>
+                    ${links.map(link => 
+                        `<a id="${link.id}" href="${link.href}" class="text-navbar hover:text-green-200">${link.nome}</a>`
+                    ).join('')}
                     <button id="userButton" class="text-navbar bg-white text-green-600 px-4 py-2 rounded font-semibold hover:bg-green-100">
                         Login
                     </button>
@@ -32,10 +40,19 @@ export function carregarHeader() {
                 </div>
             </div>
         </nav>
-        
     `;
 
     document.body.prepend(header);
+
+    links.forEach(link => {
+        if (paginaAtual === link.href.split("/").pop()) {
+            const linkElement = document.getElementById(link.id);
+            linkElement.removeAttribute("href");
+            linkElement.style.cursor = "default"; 
+            linkElement.classList.add("text-gray-400"); 
+        }
+    });
+
     verificarUsuario();
 }
 
