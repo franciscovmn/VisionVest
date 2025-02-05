@@ -5,7 +5,7 @@ export function carregarHeader() {
     const paginaAtual = window.location.pathname.split("/").pop(); 
 
     const links = [
-        { nome: "Calculadoras", href: "/visionvest/index.html/#calculadoras", id: "calculadorasLink" },
+        { nome: "Calculadoras", href: "/visionvest/index.html#calculadoras", id: "calculadorasLink" },
         { nome: "Perfis de Investimento", href: "/visionvest/src/pages/qualseuperfil.html", id: "perfisLink" }
     ];
 
