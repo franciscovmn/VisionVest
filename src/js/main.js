@@ -4,13 +4,13 @@ import { perfilCards } from './cards-perfil/perfilCards.js';
 import { perfis } from './cards-perfil/dataPerfis.js';
 import { carregarFooter } from "./footer.js";
 import { carregarHeader } from "./header.js";
-import { inserirWidgetTradingView } from './tradingview/tradingview-widget.js'; 
 
 document.addEventListener("DOMContentLoaded", () => {
-    carregarHeader();
+    if (!window.location.pathname.includes("qualseuperfiil.html")) {
+        carregarHeader();
+    }
     carregarFooter();
-    inserirWidgetTradingView();  
-
+    
     const calculadora = document.querySelector('.calculadoras');
     const perfisinvestimento = document.querySelector('.perfis');
 
@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     iniciarSistemaDeLogin();
 });
+
 
 function iniciarSistemaDeLogin() {
     const loginModal = document.querySelector("#loginModal");
